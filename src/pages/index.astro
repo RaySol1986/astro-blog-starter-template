@@ -9,42 +9,391 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			:global(body) {
+				margin: 0;
+				font-family: Arial, Helvetica, sans-serif;
+				color: #172033;
+				background: #ffffff;
+			}
+
+			.hero {
+				background: #f5f7fa;
+				padding: 90px 24px;
+				text-align: center;
+			}
+
+			.hero-inner,
+			.section-inner {
+				max-width: 1050px;
+				margin: 0 auto;
+			}
+
+			.eyebrow {
+				color: #8a6a2f;
+				font-size: 14px;
+				font-weight: 700;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
+				margin-bottom: 18px;
+			}
+
+			h1 {
+				font-size: clamp(42px, 7vw, 72px);
+				line-height: 1.05;
+				margin: 0 auto 24px;
+				max-width: 850px;
+				color: #111827;
+			}
+
+			.hero p {
+				max-width: 720px;
+				margin: 0 auto 32px;
+				font-size: 20px;
+				line-height: 1.7;
+				color: #4b5563;
+			}
+
+			.button {
+				display: inline-block;
+				background: #172033;
+				color: white;
+				padding: 15px 28px;
+				border-radius: 5px;
+				text-decoration: none;
+				font-weight: 700;
+			}
+
+			.section {
+				padding: 75px 24px;
+			}
+
+			.section-light {
+				background: #f8f9fb;
+			}
+
+			h2 {
+				font-size: 36px;
+				margin: 0 0 18px;
+				color: #111827;
+			}
+
+			.section-intro {
+				max-width: 700px;
+				font-size: 18px;
+				line-height: 1.7;
+				color: #5b6472;
+				margin-bottom: 40px;
+			}
+
+			.about-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 45px;
+				align-items: center;
+			}
+
+			.about-grid p {
+				font-size: 17px;
+				line-height: 1.8;
+				color: #4b5563;
+			}
+
+			.experience-box {
+				background: white;
+				border: 1px solid #e2e6eb;
+				padding: 32px;
+				border-radius: 8px;
+			}
+
+			.experience-number {
+				font-size: 52px;
+				font-weight: 700;
+				color: #8a6a2f;
+				margin-bottom: 8px;
+			}
+
+			.markets {
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				gap: 15px;
+				margin-top: 35px;
+			}
+
+			.market {
+				padding: 25px 15px;
+				background: white;
+				border: 1px solid #e2e6eb;
+				text-align: center;
+				border-radius: 6px;
+				font-weight: 700;
+			}
+
+			.highlights {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
+			}
+
+			.highlight {
+				border-top: 3px solid #8a6a2f;
+				padding: 25px;
+				background: white;
+				border-radius: 4px;
+			}
+
+			.highlight h3 {
+				margin-top: 0;
+				font-size: 20px;
+			}
+
+			.highlight p {
+				line-height: 1.7;
+				color: #5b6472;
+			}
+
+			.testimonials {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
+			}
+
+			.testimonial {
+				background: white;
+				border: 1px solid #e2e6eb;
+				padding: 28px;
+				border-radius: 6px;
+			}
+
+			.testimonial p {
+				line-height: 1.7;
+				color: #4b5563;
+				font-style: italic;
+			}
+
+			.testimonial strong {
+				display: block;
+				margin-top: 20px;
+				color: #172033;
+			}
+
+			.disclaimer {
+				font-size: 13px;
+				line-height: 1.6;
+				color: #6b7280;
+				margin-top: 40px;
+			}
+
+			.contact {
+				text-align: center;
+				background: #172033;
+				color: white;
+			}
+
+			.contact h2 {
+				color: white;
+			}
+
+			.contact p {
+				max-width: 650px;
+				margin: 0 auto 28px;
+				line-height: 1.7;
+				color: #d5dae2;
+			}
+
+			.contact .button {
+				background: white;
+				color: #172033;
+			}
+
+			@media (max-width: 800px) {
+				.about-grid,
+				.highlights,
+				.testimonials {
+					grid-template-columns: 1fr;
+				}
+
+				.markets {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+		</style>
 	</head>
+
 	<body>
 		<Header />
+
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<div class="hero-inner">
+					<div class="eyebrow">Senior Financial Advisor</div>
+
+					<h1>Experience. Discipline. Market Insight.</h1>
+
+					<p>
+						I'm Raymond Solomon, a Senior Financial Advisor with 20 years
+						of experience working with clients and navigating global financial markets.
+					</p>
+
+					<a class="button" href="#contact">Request a Consultation</a>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="section-inner about-grid">
+					<div>
+						<div class="eyebrow">About Raymond</div>
+
+						<h2>Two decades of market experience</h2>
+
+						<p>
+							Over the past 20 years in the UK, I have developed a
+							deep understanding of financial markets and the factors
+							that influence investment decisions.
+						</p>
+
+						<p>
+							My background includes business and finance education at
+							London Business School, combined with years of practical
+							experience observing markets through different economic
+							cycles.
+						</p>
+
+						<p>
+							My approach is built around research, discipline,
+							risk awareness and a clear understanding of each client's
+							objectives.
+						</p>
+					</div>
+
+					<div class="experience-box">
+						<div class="experience-number">20+</div>
+						<strong>Years of professional experience</strong>
+
+						<p>
+							UK-based experience across multiple market cycles,
+							with a focus on disciplined analysis and informed
+							decision-making.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="section section-light">
+				<div class="section-inner">
+					<div class="eyebrow">Markets</div>
+
+					<h2>Global markets I follow</h2>
+
+					<p class="section-intro">
+						I monitor a broad range of global markets to understand
+						opportunities, risks and changing market conditions.
+					</p>
+
+					<div class="markets">
+						<div class="market">Stocks</div>
+						<div class="market">Commodities</div>
+						<div class="market">Forex</div>
+						<div class="market">Metals</div>
+						<div class="market">Crypto</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section">
+				<div class="section-inner">
+					<div class="eyebrow">Market Focus</div>
+
+					<h2>Experience across market cycles</h2>
+
+					<div class="highlights">
+						<div class="highlight">
+							<h3>Equity Markets</h3>
+							<p>
+								Research-driven analysis of companies, sectors,
+								earnings and broader market conditions.
+							</p>
+						</div>
+
+						<div class="highlight">
+							<h3>Earnings Season</h3>
+							<p>
+								Focused attention on corporate earnings,
+								guidance, expectations and market reactions.
+							</p>
+						</div>
+
+						<div class="highlight">
+							<h3>Economic Data</h3>
+							<p>
+								Monitoring major economic releases and their
+								potential influence on currencies and markets.
+							</p>
+						</div>
+					</div>
+
+					<p class="disclaimer">
+						Information presented on this website is for general
+						informational purposes only and does not constitute
+						investment advice or a recommendation to buy or sell
+						any financial instrument. Past performance is not
+						indicative of future results.
+					</p>
+				</div>
+			</section>
+
+			<section class="section section-light">
+				<div class="section-inner">
+					<div class="eyebrow">Client Experience</div>
+
+					<h2>What clients say</h2>
+
+					<p class="section-intro">
+						Client feedback will be published here with permission.
+					</p>
+
+					<div class="testimonials">
+						<div class="testimonial">
+							<p>
+								“[Replace this with a genuine client testimonial
+								approved for publication.]”
+							</p>
+							<strong>— Verified client</strong>
+						</div>
+
+						<div class="testimonial">
+							<p>
+								“[Replace this with a genuine client testimonial
+								approved for publication.]”
+							</p>
+							<strong>— Verified client</strong>
+						</div>
+
+						<div class="testimonial">
+							<p>
+								“[Replace this with a genuine client testimonial
+								approved for publication.]”
+							</p>
+							<strong>— Verified client</strong>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section contact" id="contact">
+				<div class="section-inner">
+					<h2>Let's start a conversation</h2>
+
+					<p>
+						If you would like to discuss your financial goals
+						or learn more about my approach, get in touch.
+					</p>
+
+					<a class="button" href="/about">Contact Raymond</a>
+				</div>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
