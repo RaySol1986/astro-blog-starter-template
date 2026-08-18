@@ -11,574 +11,544 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
 		<style>
-			:global(html) {
-				scroll-behavior: smooth;
-				background: #0a0c10;
-			}
-
-			:global(body) {
-				margin: 0;
-				font-family: Arial, Helvetica, sans-serif;
-				color: #f4f1ea;
-				background: #0a0c10;
-			}
-
 			:global(*) {
 				box-sizing: border-box;
 			}
 
-			.hero {
-				position: relative;
-				overflow: hidden;
-				min-height: 760px;
-				display: flex;
-				align-items: center;
-				background:
-					radial-gradient(circle at 75% 30%, rgba(178, 145, 76, 0.12), transparent 30%),
-					linear-gradient(135deg, #080a0e 0%, #10141c 55%, #0a0c10 100%);
-				padding: 110px 24px 120px;
+			:global(html) {
+				scroll-behavior: smooth;
+				background: #080a0e;
 			}
 
-			.hero::before {
+			:global(body) {
+				margin: 0;
+				background: #080a0e;
+				color: #f4f0e8;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+
+			.page {
+				background: #080a0e;
+			}
+
+			/* =========================
+			   HERO
+			========================= */
+
+			.hero {
+				position: relative;
+				min-height: 540px;
+				border-bottom: 1px solid rgba(196, 157, 78, 0.65);
+				overflow: hidden;
+				background: #080a0e;
+			}
+
+			.hero-image {
+				position: absolute;
+				inset: 0 0 0 45%;
+				background:
+					linear-gradient(
+						90deg,
+						#080a0e 0%,
+						rgba(8, 10, 14, 0.92) 8%,
+						rgba(8, 10, 14, 0.35) 48%,
+						rgba(8, 10, 14, 0.2) 100%
+					),
+					url('/london-night.jpg') center center / cover no-repeat;
+			}
+
+			.hero-image::after {
 				content: '';
 				position: absolute;
 				inset: 0;
-				background-image:
-					linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-				background-size: 80px 80px;
-				mask-image: linear-gradient(to bottom, black, transparent 90%);
-				pointer-events: none;
-			}
-
-			.hero-inner,
-			.section-inner {
-				position: relative;
-				width: 100%;
-				max-width: 1120px;
-				margin: 0 auto;
+				background: rgba(8, 10, 14, 0.2);
 			}
 
 			.hero-inner {
-				z-index: 1;
+				position: relative;
+				z-index: 2;
+				max-width: 1050px;
+				min-height: 540px;
+				margin: 0 auto;
+				display: flex;
+				align-items: center;
+			}
+
+			.hero-content {
+				width: 58%;
+				padding: 70px 30px 70px 0;
 			}
 
 			.eyebrow {
-				color: #b99a5b;
+				margin-bottom: 18px;
+				color: #c49d4e;
 				font-size: 12px;
 				font-weight: 700;
-				letter-spacing: 3px;
+				letter-spacing: 2px;
 				text-transform: uppercase;
-				margin-bottom: 24px;
 			}
 
 			h1 {
-				max-width: 900px;
-				margin: 0 0 30px;
-				color: #f7f4ed;
+				max-width: 610px;
+				margin: 0;
 				font-family: Georgia, 'Times New Roman', serif;
-				font-size: clamp(52px, 8vw, 94px);
+				font-size: clamp(58px, 6.5vw, 88px);
 				font-weight: 400;
-				line-height: 0.98;
+				line-height: 0.95;
 				letter-spacing: -3px;
+				color: #f4f0e8;
 			}
 
-			.hero h1 span {
-				color: #b99a5b;
+			h1 .gold {
+				color: #c49d4e;
+			}
+
+			.hero-line {
+				width: 56px;
+				height: 2px;
+				margin: 28px 0 24px;
+				background: #c49d4e;
 			}
 
 			.hero-description {
-				max-width: 680px;
-				margin: 0 0 40px;
-				color: #aeb4be;
-				font-size: 19px;
+				max-width: 520px;
+				margin: 0 0 30px;
+				color: #c9c5bd;
+				font-size: 16px;
 				line-height: 1.8;
 			}
 
-			.button {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 16px 30px;
-				border: 1px solid #b99a5b;
-				background: #b99a5b;
-				color: #0a0c10;
+			.cta {
+				display: inline-block;
+				padding: 16px 29px;
+				background: #c49d4e;
+				border: 1px solid #c49d4e;
+				color: #080a0e;
 				text-decoration: none;
-				font-size: 13px;
+				font-size: 12px;
 				font-weight: 700;
-				letter-spacing: 0.8px;
+				letter-spacing: 1px;
 				text-transform: uppercase;
-				transition: all 0.25s ease;
+				transition: all 0.2s ease;
 			}
 
-			.button:hover {
-				background: #d0b577;
-				border-color: #d0b577;
-				transform: translateY(-2px);
+			.cta:hover {
+				background: #d5b56f;
+				border-color: #d5b56f;
 			}
 
-			.hero-meta {
+			/* Decorative diagonal lines */
+
+			.hero-diagonal {
+				position: absolute;
+				z-index: 3;
+				top: -50px;
+				bottom: -50px;
+				left: 48%;
+				width: 2px;
+				background: rgba(196, 157, 78, 0.42);
+				transform: rotate(18deg);
+				transform-origin: center;
+			}
+
+			.hero-diagonal.two {
+				left: calc(48% + 18px);
+				opacity: 0.35;
+			}
+
+			/* =========================
+			   CREDIBILITY BAR
+			========================= */
+
+			.stats {
+				border-bottom: 1px solid rgba(196, 157, 78, 0.55);
+				background: #080a0e;
+			}
+
+			.stats-inner {
+				max-width: 1050px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+			}
+
+			.stat {
+				min-height: 105px;
+				padding: 22px 25px;
 				display: flex;
-				gap: 55px;
-				margin-top: 85px;
-				padding-top: 28px;
-				border-top: 1px solid rgba(255,255,255,0.12);
-				max-width: 760px;
+				align-items: center;
+				gap: 16px;
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
 			}
 
-			.hero-meta-item strong {
-				display: block;
-				margin-bottom: 7px;
-				color: #f4f1ea;
-				font-size: 24px;
+			.stat:last-child {
+				border-right: none;
+			}
+
+			.stat-icon {
+				color: #c49d4e;
+				font-size: 28px;
+				width: 35px;
+				text-align: center;
+			}
+
+			.stat-number {
+				color: #c49d4e;
 				font-family: Georgia, 'Times New Roman', serif;
-				font-weight: 400;
+				font-size: 30px;
+				line-height: 1;
 			}
 
-			.hero-meta-item span {
-				color: #7f8792;
-				font-size: 11px;
+			.stat-label {
+				margin-top: 7px;
+				color: #b9b5ae;
+				font-size: 10px;
 				letter-spacing: 1.5px;
 				text-transform: uppercase;
 			}
 
-			.section {
-				padding: 110px 24px;
-				background: #0a0c10;
+			/* =========================
+			   INTRO
+			========================= */
+
+			.intro {
+				padding: 100px 24px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 			}
 
-			.section-dark {
-				background: #0d1016;
+			.intro-inner {
+				max-width: 850px;
+				margin: 0 auto;
+				text-align: center;
 			}
 
-			.section-gold {
-				background: #11151c;
-			}
-
-			h2 {
-				max-width: 760px;
-				margin: 0 0 25px;
-				color: #f4f1ea;
+			.intro h2 {
+				margin: 0 0 24px;
 				font-family: Georgia, 'Times New Roman', serif;
-				font-size: clamp(38px, 5vw, 60px);
+				font-size: clamp(38px, 5vw, 58px);
 				font-weight: 400;
-				line-height: 1.08;
-				letter-spacing: -1.5px;
+				line-height: 1.05;
+				color: #f4f0e8;
 			}
 
-			.section-intro {
-				max-width: 700px;
-				margin: 0 0 55px;
-				color: #9da5b1;
-				font-size: 18px;
+			.intro p {
+				max-width: 680px;
+				margin: 0 auto;
+				color: #aaa7a1;
+				font-size: 17px;
 				line-height: 1.8;
 			}
 
-			.about-grid {
-				display: grid;
-				grid-template-columns: 1.3fr 0.7fr;
-				gap: 100px;
-				align-items: center;
+			/* =========================
+			   MARKETS
+			========================= */
+
+			.markets-section {
+				padding: 90px 24px;
+				background: #0b0e13;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 			}
 
-			.about-copy p {
-				margin: 0 0 22px;
-				color: #aeb4be;
-				font-size: 17px;
-				line-height: 1.85;
+			.markets-inner {
+				max-width: 1050px;
+				margin: 0 auto;
 			}
 
-			.experience-box {
-				padding: 45px;
-				border: 1px solid rgba(185,154,91,0.35);
-				background: linear-gradient(145deg, #11151c, #0b0e13);
+			.section-heading {
+				margin-bottom: 45px;
 			}
 
-			.experience-number {
-				margin-bottom: 8px;
-				color: #b99a5b;
+			.section-heading h2 {
+				margin: 0;
 				font-family: Georgia, 'Times New Roman', serif;
-				font-size: 76px;
+				font-size: clamp(40px, 5vw, 58px);
 				font-weight: 400;
-				line-height: 1;
+				color: #f4f0e8;
 			}
 
-			.experience-box strong {
-				color: #f4f1ea;
-				font-size: 15px;
-				letter-spacing: 0.3px;
-			}
-
-			.experience-box p {
-				margin: 24px 0 0;
-				color: #858e9b;
-				font-size: 14px;
-				line-height: 1.7;
-			}
-
-			.markets {
+			.market-grid {
 				display: grid;
 				grid-template-columns: repeat(5, 1fr);
-				border-top: 1px solid rgba(255,255,255,0.12);
-				border-left: 1px solid rgba(255,255,255,0.12);
+				border-top: 1px solid rgba(196, 157, 78, 0.35);
+				border-left: 1px solid rgba(255, 255, 255, 0.08);
 			}
 
 			.market {
 				min-height: 150px;
+				padding: 30px 22px;
 				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 25px;
-				border-right: 1px solid rgba(255,255,255,0.12);
-				border-bottom: 1px solid rgba(255,255,255,0.12);
-				color: #dcd8cf;
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 2px;
-				text-transform: uppercase;
-				transition: all 0.25s ease;
+				align-items: flex-end;
+				border-right: 1px solid rgba(255, 255, 255, 0.08);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+				transition: background 0.25s ease;
 			}
 
 			.market:hover {
-				background: rgba(185,154,91,0.08);
-				color: #c9aa69;
+				background: #11151c;
 			}
 
-			.highlights {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 1px;
-				background: rgba(255,255,255,0.12);
-				border: 1px solid rgba(255,255,255,0.12);
-			}
-
-			.highlight {
-				min-height: 270px;
-				padding: 38px;
-				background: #0a0c10;
-			}
-
-			.highlight-number {
-				margin-bottom: 55px;
-				color: #b99a5b;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: 24px;
-			}
-
-			.highlight h3 {
-				margin: 0 0 15px;
-				color: #f4f1ea;
+			.market span {
+				color: #f4f0e8;
 				font-family: Georgia, 'Times New Roman', serif;
 				font-size: 25px;
-				font-weight: 400;
 			}
 
-			.highlight p {
-				margin: 0;
-				color: #858e9b;
-				font-size: 15px;
-				line-height: 1.75;
-			}
-
-			.insight {
-				display: grid;
-				grid-template-columns: 0.8fr 1.2fr;
-				gap: 80px;
-				align-items: center;
-			}
-
-			.insight-label {
-				color: #b99a5b;
-				font-size: 11px;
-				font-weight: 700;
-				letter-spacing: 2px;
-				text-transform: uppercase;
-			}
-
-			.insight blockquote {
-				margin: 0;
-				color: #f4f1ea;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: clamp(28px, 4vw, 44px);
-				font-weight: 400;
-				line-height: 1.25;
-			}
-
-			.disclaimer {
-				max-width: 850px;
-				margin-top: 70px;
-				padding-top: 25px;
-				border-top: 1px solid rgba(255,255,255,0.1);
-				color: #626b78;
-				font-size: 12px;
-				line-height: 1.7;
-			}
+			/* =========================
+			   CONTACT
+			========================= */
 
 			.contact {
-				padding: 130px 24px;
+				padding: 105px 24px;
 				text-align: center;
-				background:
-					radial-gradient(circle at center, rgba(185,154,91,0.11), transparent 40%),
-					#11151c;
-				border-top: 1px solid rgba(185,154,91,0.2);
+				border-bottom: 1px solid rgba(196, 157, 78, 0.45);
 			}
 
-			.contact .section-inner {
-				max-width: 800px;
+			.contact-inner {
+				max-width: 760px;
+				margin: 0 auto;
 			}
 
 			.contact h2 {
-				margin-left: auto;
-				margin-right: auto;
+				margin: 0 0 22px;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: clamp(44px, 6vw, 68px);
+				font-weight: 400;
+				line-height: 1;
+				color: #f4f0e8;
 			}
 
 			.contact p {
 				max-width: 600px;
-				margin: 0 auto 35px;
-				color: #9da5b1;
+				margin: 0 auto 32px;
+				color: #aaa7a1;
 				font-size: 17px;
 				line-height: 1.8;
 			}
 
-			@media (max-width: 850px) {
-				.about-grid,
-				.insight {
-					grid-template-columns: 1fr;
-					gap: 50px;
-				}
+			/* =========================
+			   MOBILE
+			========================= */
 
-				.markets {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
-				.highlights {
-					grid-template-columns: 1fr;
-				}
-
+			@media (max-width: 800px) {
 				.hero {
 					min-height: auto;
-					padding: 90px 24px;
 				}
 
-				.hero-meta {
-					gap: 30px;
-					flex-wrap: wrap;
+				.hero-image {
+					inset: 0;
+					opacity: 0.35;
 				}
-			}
 
-			@media (max-width: 520px) {
+				.hero-inner {
+					min-height: auto;
+				}
+
+				.hero-content {
+					width: 100%;
+					padding: 80px 24px;
+				}
+
+				.hero-diagonal {
+					display: none;
+				}
+
 				h1 {
-					font-size: 50px;
+					font-size: clamp(52px, 15vw, 76px);
 					letter-spacing: -2px;
 				}
 
-				.hero-meta {
-					display: grid;
-					grid-template-columns: 1fr 1fr;
+				.stats-inner {
+					grid-template-columns: repeat(2, 1fr);
 				}
 
-				.markets {
+				.stat:nth-child(2) {
+					border-right: none;
+				}
+
+				.stat:nth-child(-n + 2) {
+					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				}
+
+				.market-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
+			@media (max-width: 500px) {
+				.stats-inner,
+				.market-grid {
 					grid-template-columns: 1fr;
 				}
 
-				.experience-box {
-					padding: 30px;
+				.stat {
+					border-right: none;
+					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				}
+
+				.stat:last-child {
+					border-bottom: none;
+				}
+
+				.market {
+					min-height: 110px;
 				}
 			}
 		</style>
 	</head>
 
 	<body>
-		<Header />
+		<div class="page">
+			<Header />
 
-		<main>
-			<section class="hero">
-				<div class="hero-inner">
-					<div class="eyebrow">Senior Financial Advisor</div>
+			<main>
+				<!-- HERO -->
 
-					<h1>
-						Experience.<br />
-						Discipline.<br />
-						<span>Market Insight.</span>
-					</h1>
+				<section class="hero">
+					<div class="hero-image"></div>
 
-					<p class="hero-description">
-						Raymond Solomon brings 20 years of experience navigating
-						global financial markets, with a disciplined approach to
-						research, risk and market opportunity.
-					</p>
+					<div class="hero-diagonal"></div>
+					<div class="hero-diagonal two"></div>
 
-					<a class="button" href="#contact">
-						Request a Consultation
-					</a>
+					<div class="hero-inner">
+						<div class="hero-content">
+							<div class="eyebrow">Senior Financial Advisor</div>
 
-					<div class="hero-meta">
-						<div class="hero-meta-item">
-							<strong>20+</strong>
-							<span>Years Experience</span>
-						</div>
+							<h1>
+								Experience.<br />
+								Discipline.<br />
+								<span class="gold">Market Insight.</span>
+							</h1>
 
-						<div class="hero-meta-item">
-							<strong>5</strong>
-							<span>Market Areas</span>
-						</div>
+							<div class="hero-line"></div>
 
-						<div class="hero-meta-item">
-							<strong>UK</strong>
-							<span>Based in London</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="section">
-				<div class="section-inner about-grid">
-					<div class="about-copy">
-						<div class="eyebrow">About Raymond</div>
-
-						<h2>Two decades of market experience.</h2>
-
-						<p>
-							Over 20 years of market experience have provided
-							exposure to different economic environments, market
-							cycles and periods of significant volatility.
-						</p>
-
-						<p>
-							With a background in business and finance education
-							at London Business School, my approach combines
-							fundamental research with close attention to economic
-							data and market behaviour.
-						</p>
-
-						<p>
-							The objective is simple: understand the environment,
-							identify the risks and opportunities, and approach
-							each decision with discipline.
-						</p>
-					</div>
-
-					<div class="experience-box">
-						<div class="experience-number">20+</div>
-
-						<strong>Years of professional market experience</strong>
-
-						<p>
-							Experience across multiple market cycles, asset
-							classes and economic environments.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<section class="section section-dark">
-				<div class="section-inner">
-					<div class="eyebrow">Markets</div>
-
-					<h2>Global markets. One disciplined approach.</h2>
-
-					<p class="section-intro">
-						I follow a broad range of markets to understand how
-						economic developments, sentiment and capital flows
-						interact.
-					</p>
-
-					<div class="markets">
-						<div class="market">Equities</div>
-						<div class="market">Commodities</div>
-						<div class="market">Forex</div>
-						<div class="market">Metals</div>
-						<div class="market">Digital Assets</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="section">
-				<div class="section-inner">
-					<div class="eyebrow">Market Focus</div>
-
-					<h2>Preparation before prediction.</h2>
-
-					<div class="highlights">
-						<div class="highlight">
-							<div class="highlight-number">01</div>
-
-							<h3>Equity Markets</h3>
-
-							<p>
-								Following companies, sectors, valuations,
-								earnings and broader market conditions to
-								understand where opportunities and risks may
-								emerge.
+							<p class="hero-description">
+								Raymond Solomon brings 20 years of experience
+								navigating global financial markets, with a
+								disciplined approach to research, risk and
+								market opportunity.
 							</p>
-						</div>
 
-						<div class="highlight">
-							<div class="highlight-number">02</div>
-
-							<h3>Earnings Season</h3>
-
-							<p>
-								Paying close attention to results, expectations,
-								guidance and the market's reaction to new
-								information.
-							</p>
-						</div>
-
-						<div class="highlight">
-							<div class="highlight-number">03</div>
-
-							<h3>Economic Data</h3>
-
-							<p>
-								Monitoring major releases such as employment
-								data, inflation and interest-rate expectations
-								that can influence global markets.
-							</p>
+							<a class="cta" href="#contact">
+								Request a Consultation
+							</a>
 						</div>
 					</div>
+				</section>
 
-					<p class="disclaimer">
-						Information presented on this website is for general
-						informational purposes only and does not constitute
-						investment advice or a recommendation to buy or sell
-						any financial instrument. Past performance is not
-						indicative of future results.
-					</p>
-				</div>
-			</section>
+				<!-- CREDIBILITY -->
 
-			<section class="section section-gold">
-				<div class="section-inner insight">
-					<div>
-						<div class="insight-label">Market Philosophy</div>
+				<section class="stats">
+					<div class="stats-inner">
+						<div class="stat">
+							<div class="stat-icon">◷</div>
+							<div>
+								<div class="stat-number">20+</div>
+								<div class="stat-label">Years Experience</div>
+							</div>
+						</div>
+
+						<div class="stat">
+							<div class="stat-icon">◎</div>
+							<div>
+								<div class="stat-number">5</div>
+								<div class="stat-label">Market Areas</div>
+							</div>
+						</div>
+
+						<div class="stat">
+							<div class="stat-icon">♜</div>
+							<div>
+								<div class="stat-number">UK</div>
+								<div class="stat-label">Based in London</div>
+							</div>
+						</div>
+
+						<div class="stat">
+							<div class="stat-icon">↗</div>
+							<div>
+								<div class="stat-number">Disciplined</div>
+								<div class="stat-label">Research Driven</div>
+							</div>
+						</div>
 					</div>
+				</section>
 
-					<blockquote>
-						“Successful market analysis starts with preparation,
-						not prediction.”
-					</blockquote>
-				</div>
-			</section>
+				<!-- INTRO -->
 
-			<section class="section contact" id="contact">
-				<div class="section-inner">
-					<div class="eyebrow">Get In Touch</div>
+				<section class="intro">
+					<div class="intro-inner">
+						<div class="eyebrow">The Approach</div>
 
-					<h2>Let's start a conversation.</h2>
+						<h2>
+							Experience built through
+							different market cycles.
+						</h2>
 
-					<p>
-						If you would like to discuss the markets or learn more
-						about my approach, get in touch through the contact form.
-					</p>
+						<p>
+							With two decades of experience across global
+							financial markets, my approach is centred on
+							research, discipline, risk awareness and a
+							clear understanding of changing market conditions.
+						</p>
+					</div>
+				</section>
 
-					<a class="button" href="/contact">
-						Contact Raymond
-					</a>
-				</div>
-			</section>
-		</main>
+				<!-- MARKETS -->
 
-		<Footer />
+				<section class="markets-section" id="markets">
+					<div class="markets-inner">
+						<div class="section-heading">
+							<div class="eyebrow">Market Coverage</div>
+
+							<h2>Global Markets</h2>
+						</div>
+
+						<div class="market-grid">
+							<div class="market">
+								<span>Stocks</span>
+							</div>
+
+							<div class="market">
+								<span>Commodities</span>
+							</div>
+
+							<div class="market">
+								<span>Forex</span>
+							</div>
+
+							<div class="market">
+								<span>Metals</span>
+							</div>
+
+							<div class="market">
+								<span>Crypto</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- CONTACT -->
+
+				<section class="contact" id="contact">
+					<div class="contact-inner">
+						<div class="eyebrow">Private Consultation</div>
+
+						<h2>Let's start a conversation.</h2>
+
+						<p>
+							If you would like to discuss your objectives
+							or learn more about my approach to the markets,
+							get in touch.
+						</p>
+
+						<a class="cta" href="/about#contact">
+							Request a Consultation
+						</a>
+					</div>
+				</section>
+			</main>
+
+			<Footer />
+		</div>
 	</body>
 </html>
