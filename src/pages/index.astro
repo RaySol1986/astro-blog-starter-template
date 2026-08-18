@@ -9,212 +9,380 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
 		<style>
+			:global(html) {
+				scroll-behavior: smooth;
+				background: #0a0c10;
+			}
+
 			:global(body) {
 				margin: 0;
 				font-family: Arial, Helvetica, sans-serif;
-				color: #172033;
-				background: #ffffff;
+				color: #f4f1ea;
+				background: #0a0c10;
+			}
+
+			:global(*) {
+				box-sizing: border-box;
 			}
 
 			.hero {
-				background: #f5f7fa;
-				padding: 90px 24px;
-				text-align: center;
+				position: relative;
+				overflow: hidden;
+				min-height: 760px;
+				display: flex;
+				align-items: center;
+				background:
+					radial-gradient(circle at 75% 30%, rgba(178, 145, 76, 0.12), transparent 30%),
+					linear-gradient(135deg, #080a0e 0%, #10141c 55%, #0a0c10 100%);
+				padding: 110px 24px 120px;
+			}
+
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-image:
+					linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+				background-size: 80px 80px;
+				mask-image: linear-gradient(to bottom, black, transparent 90%);
+				pointer-events: none;
 			}
 
 			.hero-inner,
 			.section-inner {
-				max-width: 1050px;
+				position: relative;
+				width: 100%;
+				max-width: 1120px;
 				margin: 0 auto;
 			}
 
+			.hero-inner {
+				z-index: 1;
+			}
+
 			.eyebrow {
-				color: #8a6a2f;
-				font-size: 14px;
+				color: #b99a5b;
+				font-size: 12px;
 				font-weight: 700;
-				letter-spacing: 1.5px;
+				letter-spacing: 3px;
 				text-transform: uppercase;
-				margin-bottom: 18px;
+				margin-bottom: 24px;
 			}
 
 			h1 {
-				font-size: clamp(42px, 7vw, 72px);
-				line-height: 1.05;
-				margin: 0 auto 24px;
-				max-width: 850px;
-				color: #111827;
+				max-width: 900px;
+				margin: 0 0 30px;
+				color: #f7f4ed;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: clamp(52px, 8vw, 94px);
+				font-weight: 400;
+				line-height: 0.98;
+				letter-spacing: -3px;
 			}
 
-			.hero p {
-				max-width: 720px;
-				margin: 0 auto 32px;
-				font-size: 20px;
-				line-height: 1.7;
-				color: #4b5563;
+			.hero h1 span {
+				color: #b99a5b;
+			}
+
+			.hero-description {
+				max-width: 680px;
+				margin: 0 0 40px;
+				color: #aeb4be;
+				font-size: 19px;
+				line-height: 1.8;
 			}
 
 			.button {
-				display: inline-block;
-				background: #172033;
-				color: white;
-				padding: 15px 28px;
-				border-radius: 5px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 16px 30px;
+				border: 1px solid #b99a5b;
+				background: #b99a5b;
+				color: #0a0c10;
 				text-decoration: none;
+				font-size: 13px;
 				font-weight: 700;
+				letter-spacing: 0.8px;
+				text-transform: uppercase;
+				transition: all 0.25s ease;
+			}
+
+			.button:hover {
+				background: #d0b577;
+				border-color: #d0b577;
+				transform: translateY(-2px);
+			}
+
+			.hero-meta {
+				display: flex;
+				gap: 55px;
+				margin-top: 85px;
+				padding-top: 28px;
+				border-top: 1px solid rgba(255,255,255,0.12);
+				max-width: 760px;
+			}
+
+			.hero-meta-item strong {
+				display: block;
+				margin-bottom: 7px;
+				color: #f4f1ea;
+				font-size: 24px;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-weight: 400;
+			}
+
+			.hero-meta-item span {
+				color: #7f8792;
+				font-size: 11px;
+				letter-spacing: 1.5px;
+				text-transform: uppercase;
 			}
 
 			.section {
-				padding: 75px 24px;
+				padding: 110px 24px;
+				background: #0a0c10;
 			}
 
-			.section-light {
-				background: #f8f9fb;
+			.section-dark {
+				background: #0d1016;
+			}
+
+			.section-gold {
+				background: #11151c;
 			}
 
 			h2 {
-				font-size: 36px;
-				margin: 0 0 18px;
-				color: #111827;
+				max-width: 760px;
+				margin: 0 0 25px;
+				color: #f4f1ea;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: clamp(38px, 5vw, 60px);
+				font-weight: 400;
+				line-height: 1.08;
+				letter-spacing: -1.5px;
 			}
 
 			.section-intro {
 				max-width: 700px;
+				margin: 0 0 55px;
+				color: #9da5b1;
 				font-size: 18px;
-				line-height: 1.7;
-				color: #5b6472;
-				margin-bottom: 40px;
+				line-height: 1.8;
 			}
 
 			.about-grid {
 				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 45px;
+				grid-template-columns: 1.3fr 0.7fr;
+				gap: 100px;
 				align-items: center;
 			}
 
-			.about-grid p {
+			.about-copy p {
+				margin: 0 0 22px;
+				color: #aeb4be;
 				font-size: 17px;
-				line-height: 1.8;
-				color: #4b5563;
+				line-height: 1.85;
 			}
 
 			.experience-box {
-				background: white;
-				border: 1px solid #e2e6eb;
-				padding: 32px;
-				border-radius: 8px;
+				padding: 45px;
+				border: 1px solid rgba(185,154,91,0.35);
+				background: linear-gradient(145deg, #11151c, #0b0e13);
 			}
 
 			.experience-number {
-				font-size: 52px;
-				font-weight: 700;
-				color: #8a6a2f;
 				margin-bottom: 8px;
+				color: #b99a5b;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: 76px;
+				font-weight: 400;
+				line-height: 1;
+			}
+
+			.experience-box strong {
+				color: #f4f1ea;
+				font-size: 15px;
+				letter-spacing: 0.3px;
+			}
+
+			.experience-box p {
+				margin: 24px 0 0;
+				color: #858e9b;
+				font-size: 14px;
+				line-height: 1.7;
 			}
 
 			.markets {
 				display: grid;
 				grid-template-columns: repeat(5, 1fr);
-				gap: 15px;
-				margin-top: 35px;
+				border-top: 1px solid rgba(255,255,255,0.12);
+				border-left: 1px solid rgba(255,255,255,0.12);
 			}
 
 			.market {
-				padding: 25px 15px;
-				background: white;
-				border: 1px solid #e2e6eb;
-				text-align: center;
-				border-radius: 6px;
+				min-height: 150px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 25px;
+				border-right: 1px solid rgba(255,255,255,0.12);
+				border-bottom: 1px solid rgba(255,255,255,0.12);
+				color: #dcd8cf;
+				font-size: 12px;
 				font-weight: 700;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				transition: all 0.25s ease;
+			}
+
+			.market:hover {
+				background: rgba(185,154,91,0.08);
+				color: #c9aa69;
 			}
 
 			.highlights {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 20px;
+				gap: 1px;
+				background: rgba(255,255,255,0.12);
+				border: 1px solid rgba(255,255,255,0.12);
 			}
 
 			.highlight {
-				border-top: 3px solid #8a6a2f;
-				padding: 25px;
-				background: white;
-				border-radius: 4px;
+				min-height: 270px;
+				padding: 38px;
+				background: #0a0c10;
+			}
+
+			.highlight-number {
+				margin-bottom: 55px;
+				color: #b99a5b;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: 24px;
 			}
 
 			.highlight h3 {
-				margin-top: 0;
-				font-size: 20px;
+				margin: 0 0 15px;
+				color: #f4f1ea;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: 25px;
+				font-weight: 400;
 			}
 
 			.highlight p {
-				line-height: 1.7;
-				color: #5b6472;
+				margin: 0;
+				color: #858e9b;
+				font-size: 15px;
+				line-height: 1.75;
 			}
 
-			.testimonials {
+			.insight {
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 20px;
+				grid-template-columns: 0.8fr 1.2fr;
+				gap: 80px;
+				align-items: center;
 			}
 
-			.testimonial {
-				background: white;
-				border: 1px solid #e2e6eb;
-				padding: 28px;
-				border-radius: 6px;
+			.insight-label {
+				color: #b99a5b;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 2px;
+				text-transform: uppercase;
 			}
 
-			.testimonial p {
-				line-height: 1.7;
-				color: #4b5563;
-				font-style: italic;
-			}
-
-			.testimonial strong {
-				display: block;
-				margin-top: 20px;
-				color: #172033;
+			.insight blockquote {
+				margin: 0;
+				color: #f4f1ea;
+				font-family: Georgia, 'Times New Roman', serif;
+				font-size: clamp(28px, 4vw, 44px);
+				font-weight: 400;
+				line-height: 1.25;
 			}
 
 			.disclaimer {
-				font-size: 13px;
-				line-height: 1.6;
-				color: #6b7280;
-				margin-top: 40px;
+				max-width: 850px;
+				margin-top: 70px;
+				padding-top: 25px;
+				border-top: 1px solid rgba(255,255,255,0.1);
+				color: #626b78;
+				font-size: 12px;
+				line-height: 1.7;
 			}
 
 			.contact {
+				padding: 130px 24px;
 				text-align: center;
-				background: #172033;
-				color: white;
+				background:
+					radial-gradient(circle at center, rgba(185,154,91,0.11), transparent 40%),
+					#11151c;
+				border-top: 1px solid rgba(185,154,91,0.2);
+			}
+
+			.contact .section-inner {
+				max-width: 800px;
 			}
 
 			.contact h2 {
-				color: white;
+				margin-left: auto;
+				margin-right: auto;
 			}
 
 			.contact p {
-				max-width: 650px;
-				margin: 0 auto 28px;
-				line-height: 1.7;
-				color: #d5dae2;
+				max-width: 600px;
+				margin: 0 auto 35px;
+				color: #9da5b1;
+				font-size: 17px;
+				line-height: 1.8;
 			}
 
-			.contact .button {
-				background: white;
-				color: #172033;
-			}
-
-			@media (max-width: 800px) {
+			@media (max-width: 850px) {
 				.about-grid,
-				.highlights,
-				.testimonials {
+				.insight {
 					grid-template-columns: 1fr;
+					gap: 50px;
 				}
 
 				.markets {
 					grid-template-columns: repeat(2, 1fr);
+				}
+
+				.highlights {
+					grid-template-columns: 1fr;
+				}
+
+				.hero {
+					min-height: auto;
+					padding: 90px 24px;
+				}
+
+				.hero-meta {
+					gap: 30px;
+					flex-wrap: wrap;
+				}
+			}
+
+			@media (max-width: 520px) {
+				h1 {
+					font-size: 50px;
+					letter-spacing: -2px;
+				}
+
+				.hero-meta {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+				}
+
+				.markets {
+					grid-template-columns: 1fr;
+				}
+
+				.experience-box {
+					padding: 30px;
 				}
 			}
 		</style>
@@ -228,74 +396,99 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="hero-inner">
 					<div class="eyebrow">Senior Financial Advisor</div>
 
-					<h1>Experience. Discipline. Market Insight.</h1>
+					<h1>
+						Experience.<br />
+						Discipline.<br />
+						<span>Market Insight.</span>
+					</h1>
 
-					<p>
-						I'm Raymond Solomon, a Senior Financial Advisor with 20 years
-						of experience working with clients and navigating global financial markets.
+					<p class="hero-description">
+						Raymond Solomon brings 20 years of experience navigating
+						global financial markets, with a disciplined approach to
+						research, risk and market opportunity.
 					</p>
 
-					<a class="button" href="#contact">Request a Consultation</a>
+					<a class="button" href="#contact">
+						Request a Consultation
+					</a>
+
+					<div class="hero-meta">
+						<div class="hero-meta-item">
+							<strong>20+</strong>
+							<span>Years Experience</span>
+						</div>
+
+						<div class="hero-meta-item">
+							<strong>5</strong>
+							<span>Market Areas</span>
+						</div>
+
+						<div class="hero-meta-item">
+							<strong>UK</strong>
+							<span>Based in London</span>
+						</div>
+					</div>
 				</div>
 			</section>
 
 			<section class="section">
 				<div class="section-inner about-grid">
-					<div>
+					<div class="about-copy">
 						<div class="eyebrow">About Raymond</div>
 
-						<h2>Two decades of market experience</h2>
+						<h2>Two decades of market experience.</h2>
 
 						<p>
-							Over the past 20 years in the UK, I have developed a
-							deep understanding of financial markets and the factors
-							that influence investment decisions.
+							Over 20 years of market experience have provided
+							exposure to different economic environments, market
+							cycles and periods of significant volatility.
 						</p>
 
 						<p>
-							My background includes business and finance education at
-							London Business School, combined with years of practical
-							experience observing markets through different economic
-							cycles.
+							With a background in business and finance education
+							at London Business School, my approach combines
+							fundamental research with close attention to economic
+							data and market behaviour.
 						</p>
 
 						<p>
-							My approach is built around research, discipline,
-							risk awareness and a clear understanding of each client's
-							objectives.
+							The objective is simple: understand the environment,
+							identify the risks and opportunities, and approach
+							each decision with discipline.
 						</p>
 					</div>
 
 					<div class="experience-box">
 						<div class="experience-number">20+</div>
-						<strong>Years of professional experience</strong>
+
+						<strong>Years of professional market experience</strong>
 
 						<p>
-							UK-based experience across multiple market cycles,
-							with a focus on disciplined analysis and informed
-							decision-making.
+							Experience across multiple market cycles, asset
+							classes and economic environments.
 						</p>
 					</div>
 				</div>
 			</section>
 
-			<section class="section section-light">
+			<section class="section section-dark">
 				<div class="section-inner">
 					<div class="eyebrow">Markets</div>
 
-					<h2>Global markets I follow</h2>
+					<h2>Global markets. One disciplined approach.</h2>
 
 					<p class="section-intro">
-						I monitor a broad range of global markets to understand
-						opportunities, risks and changing market conditions.
+						I follow a broad range of markets to understand how
+						economic developments, sentiment and capital flows
+						interact.
 					</p>
 
 					<div class="markets">
-						<div class="market">Stocks</div>
+						<div class="market">Equities</div>
 						<div class="market">Commodities</div>
 						<div class="market">Forex</div>
 						<div class="market">Metals</div>
-						<div class="market">Crypto</div>
+						<div class="market">Digital Assets</div>
 					</div>
 				</div>
 			</section>
@@ -304,30 +497,43 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="section-inner">
 					<div class="eyebrow">Market Focus</div>
 
-					<h2>Experience across market cycles</h2>
+					<h2>Preparation before prediction.</h2>
 
 					<div class="highlights">
 						<div class="highlight">
+							<div class="highlight-number">01</div>
+
 							<h3>Equity Markets</h3>
+
 							<p>
-								Research-driven analysis of companies, sectors,
-								earnings and broader market conditions.
+								Following companies, sectors, valuations,
+								earnings and broader market conditions to
+								understand where opportunities and risks may
+								emerge.
 							</p>
 						</div>
 
 						<div class="highlight">
+							<div class="highlight-number">02</div>
+
 							<h3>Earnings Season</h3>
+
 							<p>
-								Focused attention on corporate earnings,
-								guidance, expectations and market reactions.
+								Paying close attention to results, expectations,
+								guidance and the market's reaction to new
+								information.
 							</p>
 						</div>
 
 						<div class="highlight">
+							<div class="highlight-number">03</div>
+
 							<h3>Economic Data</h3>
+
 							<p>
-								Monitoring major economic releases and their
-								potential influence on currencies and markets.
+								Monitoring major releases such as employment
+								data, inflation and interest-rate expectations
+								that can influence global markets.
 							</p>
 						</div>
 					</div>
@@ -342,54 +548,33 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 			</section>
 
-			<section class="section section-light">
-				<div class="section-inner">
-					<div class="eyebrow">Client Experience</div>
-
-					<h2>What clients say</h2>
-
-					<p class="section-intro">
-						Client feedback will be published here with permission.
-					</p>
-
-					<div class="testimonials">
-						<div class="testimonial">
-							<p>
-								“[Replace this with a genuine client testimonial
-								approved for publication.]”
-							</p>
-							<strong>— Verified client</strong>
-						</div>
-
-						<div class="testimonial">
-							<p>
-								“[Replace this with a genuine client testimonial
-								approved for publication.]”
-							</p>
-							<strong>— Verified client</strong>
-						</div>
-
-						<div class="testimonial">
-							<p>
-								“[Replace this with a genuine client testimonial
-								approved for publication.]”
-							</p>
-							<strong>— Verified client</strong>
-						</div>
+			<section class="section section-gold">
+				<div class="section-inner insight">
+					<div>
+						<div class="insight-label">Market Philosophy</div>
 					</div>
+
+					<blockquote>
+						“Successful market analysis starts with preparation,
+						not prediction.”
+					</blockquote>
 				</div>
 			</section>
 
 			<section class="section contact" id="contact">
 				<div class="section-inner">
-					<h2>Let's start a conversation</h2>
+					<div class="eyebrow">Get In Touch</div>
+
+					<h2>Let's start a conversation.</h2>
 
 					<p>
-						If you would like to discuss your financial goals
-						or learn more about my approach, get in touch.
+						If you would like to discuss the markets or learn more
+						about my approach, get in touch through the contact form.
 					</p>
 
-					<a class="button" href="/about">Contact Raymond</a>
+					<a class="button" href="/contact">
+						Contact Raymond
+					</a>
 				</div>
 			</section>
 		</main>
