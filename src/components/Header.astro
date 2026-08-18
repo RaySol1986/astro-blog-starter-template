@@ -4,14 +4,23 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2>
-			<a href="/">Raymond Solomon</a>
-		</h2>
+		<a class="brand" href="/">
+			<div class="monogram">RS</div>
+
+			<div class="brand-divider"></div>
+
+			<div class="brand-text">
+				<div class="brand-name">RAYMOND SOLOMON</div>
+				<div class="brand-title">SENIOR FINANCIAL ADVISOR</div>
+			</div>
+		</a>
 
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
-			<a href="/about#contact">Contact</a>
+			<a href="/#markets">Markets</a>
+			<a href="/#contact">Contact</a>
+			<a class="consultation" href="/#contact">Consultation</a>
 		</div>
 	</nav>
 </header>
@@ -21,66 +30,136 @@ import HeaderLink from './HeaderLink.astro';
 		margin: 0;
 		padding: 0 24px;
 		background: #080a0e;
-		border-bottom: 1px solid rgba(196, 157, 78, 0.18);
+		border-bottom: 1px solid rgba(196, 157, 78, 0.55);
 	}
 
 	nav {
-		max-width: 1050px;
+		max-width: 1250px;
 		margin: 0 auto;
-		min-height: 76px;
+		min-height: 80px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 30px;
 	}
 
-h2 {
-	margin: 0;
-	font-family: Georgia, "Times New Roman", serif;
-	font-size: 21px;
-	font-weight: 700;
-	letter-spacing: -0.5px;
-}
+	.brand {
+		display: flex;
+		align-items: center;
+		color: #f4f0e8;
+		text-decoration: none;
+	}
 
-h2 a {
-	color: #f4f0e8;
-	text-decoration: none;
-	font-family: Georgia, "Times New Roman", serif;
-	font-weight: 700;
-}
+	.monogram {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 34px;
+		line-height: 1;
+		color: #c49d4e;
+		letter-spacing: -4px;
+		width: 58px;
+	}
+
+	.brand-divider {
+		width: 1px;
+		height: 44px;
+		margin: 0 20px 0 18px;
+		background: rgba(255, 255, 255, 0.25);
+	}
+
+	.brand-name {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 16px;
+		letter-spacing: 4px;
+		color: #c49d4e;
+	}
+
+	.brand-title {
+		margin-top: 7px;
+		font-size: 9px;
+		letter-spacing: 3px;
+		color: #aaa7a1;
+	}
 
 	.internal-links {
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 10px;
 	}
 
 	.internal-links a {
-		position: relative;
-		padding: 12px 14px;
+		padding: 10px 14px;
 		color: #c9c5bd;
 		text-decoration: none;
-		font-size: 14px;
-		letter-spacing: 0.2px;
-		transition:
-			color 0.2s ease,
-			background 0.2s ease;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		transition: color 0.2s ease;
 	}
 
 	.internal-links a:hover {
 		color: #c49d4e;
 	}
 
+	.internal-links .consultation {
+		margin-left: 8px;
+		padding: 10px 22px;
+		border: 1px solid rgba(196, 157, 78, 0.65);
+		color: #c49d4e;
+	}
+
+	.internal-links .consultation:hover {
+		background: #c49d4e;
+		color: #080a0e;
+	}
+
+	@media (max-width: 850px) {
+		.brand-title {
+			display: none;
+		}
+
+		.brand-divider {
+			margin-right: 10px;
+		}
+
+		.brand-name {
+			font-size: 13px;
+			letter-spacing: 2px;
+		}
+
+		.internal-links a {
+			padding: 8px 6px;
+			font-size: 10px;
+		}
+
+		.internal-links .consultation {
+			display: none;
+		}
+	}
+
 	@media (max-width: 600px) {
 		header {
-			padding: 0 18px;
+			padding: 0 16px;
 		}
 
 		nav {
-			min-height: 68px;
+			min-height: 70px;
 		}
 
-		h2 {
-			font-size: 18px;
+		.monogram {
+			font-size: 28px;
+			width: 45px;
+		}
+
+		.brand-divider {
+			height: 36px;
+			margin-left: 10px;
+			margin-right: 12px;
+		}
+
+		.brand-name {
+			font-size: 11px;
+			letter-spacing: 1.5px;
 		}
 
 		.internal-links {
@@ -88,8 +167,9 @@ h2 a {
 		}
 
 		.internal-links a {
-			padding: 10px 7px;
-			font-size: 13px;
+			padding: 7px 5px;
+			font-size: 9px;
+			letter-spacing: 1px;
 		}
 	}
 </style>
