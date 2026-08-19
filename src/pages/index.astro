@@ -43,7 +43,7 @@ import Footer from '../components/Footer.astro';
 						and market opportunity.
 					</p>
 
-					<a class="hero-button" href="/contact">
+					<a class="hero-button" href="#contact">
 						Request a Consultation
 					</a>
 				</div>
@@ -193,10 +193,10 @@ import Footer from '../components/Footer.astro';
 				</div>
 			</section>
 
-			<!-- CONTACT CTA -->
+			<!-- CONTACT -->
 			<section class="contact-cta" id="contact">
 				<div class="contact-inner">
-					<div>
+					<div class="contact-intro">
 						<div class="eyebrow">Start a Conversation</div>
 
 						<h2>
@@ -210,9 +210,84 @@ import Footer from '../components/Footer.astro';
 						</p>
 					</div>
 
-					<a class="hero-button" href="/contact">
-						Request a Consultation
-					</a>
+					<form
+						name="contact"
+						method="POST"
+						data-netlify="true"
+						netlify-honeypot="bot-field"
+						class="contact-form"
+					>
+						<input type="hidden" name="form-name" value="contact" />
+
+						<p class="hidden-field">
+							<label>
+								Don't fill this out if you're human:
+								<input name="bot-field" />
+							</label>
+						</p>
+
+						<div class="form-row">
+							<div class="form-field">
+								<label for="name">Name</label>
+
+								<input
+									id="name"
+									name="name"
+									type="text"
+									autocomplete="name"
+									placeholder="Your name"
+									required
+								/>
+							</div>
+
+							<div class="form-field">
+								<label for="email">Email</label>
+
+								<input
+									id="email"
+									name="email"
+									type="email"
+									autocomplete="email"
+									placeholder="Your email address"
+									required
+								/>
+							</div>
+						</div>
+
+						<div class="form-field">
+							<label for="phone">
+								Phone <span>(optional)</span>
+							</label>
+
+							<input
+								id="phone"
+								name="phone"
+								type="tel"
+								autocomplete="tel"
+								placeholder="Your phone number"
+							/>
+						</div>
+
+						<div class="form-field">
+							<label for="message">Message</label>
+
+							<textarea
+								id="message"
+								name="message"
+								rows="6"
+								placeholder="Tell me briefly how I can help..."
+								required
+							></textarea>
+						</div>
+
+						<button type="submit" class="hero-button form-submit">
+							Send Private Message
+						</button>
+
+						<p class="form-note">
+							Your information will only be used to respond to your enquiry.
+						</p>
+					</form>
 				</div>
 			</section>
 		</main>
@@ -362,7 +437,14 @@ import Footer from '../components/Footer.astro';
 		background: #c49d4e;
 		color: #080a0e;
 
+		border: 0;
+
 		text-decoration: none;
+
+		font-family:
+			Arial,
+			Helvetica,
+			sans-serif;
 
 		font-size: 12px;
 		font-weight: 700;
@@ -744,9 +826,11 @@ import Footer from '../components/Footer.astro';
 	/* CONTACT */
 
 	.contact-cta {
-		padding: 110px 0;
+		padding: 120px 0;
 
 		background: #080a0e;
+
+		border-top: 1px solid rgba(196, 157, 78, 0.2);
 	}
 
 	.contact-inner {
@@ -754,13 +838,17 @@ import Footer from '../components/Footer.astro';
 
 		margin: 0 auto;
 
-		display: flex;
+		display: grid;
 
-		align-items: center;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
 
-		justify-content: space-between;
+		gap: 90px;
 
-		gap: 60px;
+		align-items: start;
+	}
+
+	.contact-intro {
+		padding-top: 10px;
 	}
 
 	.contact-inner h2 {
@@ -782,7 +870,7 @@ import Footer from '../components/Footer.astro';
 	.contact-description {
 		max-width: 520px;
 
-		margin: 22px 0 0;
+		margin: 26px 0 0;
 
 		color: #9c9fa5;
 
@@ -791,10 +879,134 @@ import Footer from '../components/Footer.astro';
 		line-height: 1.8;
 	}
 
-	.contact-inner .hero-button {
-		flex-shrink: 0;
+	/* CONTACT FORM */
 
-		margin-top: 0;
+	.contact-form {
+		width: 100%;
+
+		display: flex;
+
+		flex-direction: column;
+
+		gap: 22px;
+	}
+
+	.form-row {
+		display: grid;
+
+		grid-template-columns: 1fr 1fr;
+
+		gap: 18px;
+	}
+
+	.form-field {
+		display: flex;
+
+		flex-direction: column;
+
+		gap: 9px;
+	}
+
+	.form-field label {
+		color: #c49d4e;
+
+		font-size: 10px;
+
+		font-weight: 700;
+
+		letter-spacing: 1.8px;
+
+		text-transform: uppercase;
+	}
+
+	.form-field label span {
+		color: #777d87;
+
+		font-weight: 400;
+
+		letter-spacing: 0;
+
+		text-transform: none;
+	}
+
+	.form-field input,
+	.form-field textarea {
+		width: 100%;
+
+		padding: 15px 16px;
+
+		background: #0b0e13;
+
+		border: 1px solid rgba(255, 255, 255, 0.14);
+
+		border-radius: 0;
+
+		outline: none;
+
+		color: #f4f0e8;
+
+		font-family:
+			Arial,
+			Helvetica,
+			sans-serif;
+
+		font-size: 14px;
+
+		transition:
+			border-color 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.form-field input {
+		height: 52px;
+	}
+
+	.form-field textarea {
+		min-height: 150px;
+
+		resize: vertical;
+
+		line-height: 1.6;
+	}
+
+	.form-field input::placeholder,
+	.form-field textarea::placeholder {
+		color: #5f646c;
+	}
+
+	.form-field input:focus,
+	.form-field textarea:focus {
+		border-color: rgba(196, 157, 78, 0.7);
+
+		background: #0d1016;
+	}
+
+	.form-submit {
+		margin-top: 4px;
+
+		cursor: pointer;
+	}
+
+	.form-note {
+		margin: -5px 0 0;
+
+		color: #666b73;
+
+		font-size: 11px;
+
+		line-height: 1.6;
+	}
+
+	.hidden-field {
+		position: absolute;
+
+		left: -9999px;
+
+		width: 1px;
+
+		height: 1px;
+
+		overflow: hidden;
 	}
 
 	/* TABLET */
@@ -819,13 +1031,9 @@ import Footer from '../components/Footer.astro';
 		}
 
 		.contact-inner {
-			flex-direction: column;
+			grid-template-columns: 1fr;
 
-			align-items: flex-start;
-		}
-
-		.contact-inner .hero-button {
-			margin-top: 10px;
+			gap: 50px;
 		}
 	}
 
@@ -940,6 +1148,14 @@ import Footer from '../components/Footer.astro';
 
 		.contact-inner {
 			width: min(100% - 36px, 600px);
+
+			grid-template-columns: 1fr;
+
+			gap: 45px;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr;
 		}
 
 		.contact-inner h2 {
