@@ -210,62 +210,64 @@ import Footer from '../components/Footer.astro';
 						</p>
 					</div>
 
+					<!-- FORMSPREE CONTACT FORM -->
 					<form
-						name="contact"
-						method="POST"
-						data-netlify="true"
-						netlify-honeypot="bot-field"
 						class="contact-form"
+						action="https://formspree.io/f/mbgrpvop"
+						method="POST"
 					>
-						<input type="hidden" name="form-name" value="contact" />
-
-						<p class="hidden-field">
-							<label>
-								Don't fill this out if you're human:
-								<input name="bot-field" />
-							</label>
-						</p>
-
 						<div class="form-row">
 							<div class="form-field">
-								<label for="name">Name</label>
+								<label for="name">Full Name</label>
 
 								<input
+									type="text"
 									id="name"
 									name="name"
-									type="text"
-									autocomplete="name"
 									placeholder="Your name"
+									autocomplete="name"
 									required
 								/>
 							</div>
 
 							<div class="form-field">
-								<label for="email">Email</label>
+								<label for="email">Email Address</label>
 
 								<input
+									type="email"
 									id="email"
 									name="email"
-									type="email"
+									placeholder="you@example.com"
 									autocomplete="email"
-									placeholder="Your email address"
 									required
 								/>
 							</div>
 						</div>
 
-						<div class="form-field">
-							<label for="phone">
-								Phone <span>(optional)</span>
-							</label>
+						<div class="form-row">
+							<div class="form-field">
+								<label for="phone">Phone Number <span>(Optional)</span></label>
 
-							<input
-								id="phone"
-								name="phone"
-								type="tel"
-								autocomplete="tel"
-								placeholder="Your phone number"
-							/>
+								<input
+									type="tel"
+									id="phone"
+									name="phone"
+									placeholder="+44 ..."
+									autocomplete="tel"
+								/>
+							</div>
+
+							<div class="form-field">
+								<label for="subject">Subject</label>
+
+								<input
+									type="text"
+									id="subject"
+									name="subject"
+									placeholder="How can I help?"
+									required
+								/>
+							</div>
 						</div>
 
 						<div class="form-field">
@@ -274,18 +276,27 @@ import Footer from '../components/Footer.astro';
 							<textarea
 								id="message"
 								name="message"
-								rows="6"
-								placeholder="Tell me briefly how I can help..."
+								rows="7"
+								placeholder="Please tell me a little about your enquiry..."
 								required
 							></textarea>
 						</div>
 
-						<button type="submit" class="hero-button form-submit">
-							Send Private Message
+						<!-- Helps identify the purpose of the submission in Formspree -->
+						<input
+							type="hidden"
+							name="_subject"
+							value="New consultation request from Raymond Solomon website"
+						/>
+
+						<button class="form-submit" type="submit">
+							Send Message
+							<span>→</span>
 						</button>
 
 						<p class="form-note">
-							Your information will only be used to respond to your enquiry.
+							Your information will be treated privately and used only to
+							respond to your enquiry.
 						</p>
 					</form>
 				</div>
@@ -437,14 +448,7 @@ import Footer from '../components/Footer.astro';
 		background: #c49d4e;
 		color: #080a0e;
 
-		border: 0;
-
 		text-decoration: none;
-
-		font-family:
-			Arial,
-			Helvetica,
-			sans-serif;
 
 		font-size: 12px;
 		font-weight: 700;
@@ -826,7 +830,7 @@ import Footer from '../components/Footer.astro';
 	/* CONTACT */
 
 	.contact-cta {
-		padding: 120px 0;
+		padding: 110px 0;
 
 		background: #080a0e;
 
@@ -840,11 +844,11 @@ import Footer from '../components/Footer.astro';
 
 		display: grid;
 
-		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-
-		gap: 90px;
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
 
 		align-items: start;
+
+		gap: 80px;
 	}
 
 	.contact-intro {
@@ -864,13 +868,15 @@ import Footer from '../components/Footer.astro';
 	}
 
 	.contact-inner h2 span {
+		display: block;
+
 		color: #c49d4e;
 	}
 
 	.contact-description {
 		max-width: 520px;
 
-		margin: 26px 0 0;
+		margin: 28px 0 0;
 
 		color: #9c9fa5;
 
@@ -884,19 +890,19 @@ import Footer from '../components/Footer.astro';
 	.contact-form {
 		width: 100%;
 
-		display: flex;
+		padding: 34px;
 
-		flex-direction: column;
+		background: #0b0e13;
 
-		gap: 22px;
+		border: 1px solid rgba(196, 157, 78, 0.3);
 	}
 
 	.form-row {
 		display: grid;
 
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 
-		gap: 18px;
+		gap: 20px;
 	}
 
 	.form-field {
@@ -904,17 +910,18 @@ import Footer from '../components/Footer.astro';
 
 		flex-direction: column;
 
-		gap: 9px;
+		margin-bottom: 22px;
 	}
 
 	.form-field label {
-		color: #c49d4e;
+		margin-bottom: 9px;
+
+		color: #f4f0e8;
 
 		font-size: 10px;
-
 		font-weight: 700;
 
-		letter-spacing: 1.8px;
+		letter-spacing: 1.5px;
 
 		text-transform: uppercase;
 	}
@@ -925,8 +932,6 @@ import Footer from '../components/Footer.astro';
 		font-weight: 400;
 
 		letter-spacing: 0;
-
-		text-transform: none;
 	}
 
 	.form-field input,
@@ -935,13 +940,11 @@ import Footer from '../components/Footer.astro';
 
 		padding: 15px 16px;
 
-		background: #0b0e13;
+		background: #080a0e;
 
 		border: 1px solid rgba(255, 255, 255, 0.14);
 
 		border-radius: 0;
-
-		outline: none;
 
 		color: #f4f0e8;
 
@@ -952,13 +955,23 @@ import Footer from '../components/Footer.astro';
 
 		font-size: 14px;
 
+		outline: none;
+
 		transition:
 			border-color 0.2s ease,
 			background 0.2s ease;
 	}
 
-	.form-field input {
-		height: 52px;
+	.form-field input::placeholder,
+	.form-field textarea::placeholder {
+		color: #626771;
+	}
+
+	.form-field input:focus,
+	.form-field textarea:focus {
+		border-color: #c49d4e;
+
+		background: #0a0d12;
 	}
 
 	.form-field textarea {
@@ -969,44 +982,66 @@ import Footer from '../components/Footer.astro';
 		line-height: 1.6;
 	}
 
-	.form-field input::placeholder,
-	.form-field textarea::placeholder {
-		color: #5f646c;
-	}
-
-	.form-field input:focus,
-	.form-field textarea:focus {
-		border-color: rgba(196, 157, 78, 0.7);
-
-		background: #0d1016;
-	}
-
 	.form-submit {
-		margin-top: 4px;
+		display: inline-flex;
 
-		cursor: pointer;
-	}
+		align-items: center;
+		justify-content: center;
 
-	.form-note {
-		margin: -5px 0 0;
+		gap: 18px;
 
-		color: #666b73;
+		width: 100%;
+
+		padding: 17px 28px;
+
+		background: #c49d4e;
+
+		border: 0;
+
+		color: #080a0e;
+
+		font-family:
+			Arial,
+			Helvetica,
+			sans-serif;
 
 		font-size: 11px;
 
-		line-height: 1.6;
+		font-weight: 700;
+
+		letter-spacing: 1.8px;
+
+		text-transform: uppercase;
+
+		cursor: pointer;
+
+		transition:
+			background 0.2s ease,
+			transform 0.2s ease;
 	}
 
-	.hidden-field {
-		position: absolute;
+	.form-submit:hover {
+		background: #d5b263;
 
-		left: -9999px;
+		transform: translateY(-2px);
+	}
 
-		width: 1px;
+	.form-submit span {
+		font-size: 18px;
 
-		height: 1px;
+		line-height: 1;
+	}
 
-		overflow: hidden;
+	.form-note {
+		margin: 18px 0 0;
+
+		color: #686e78;
+
+		font-size: 10px;
+
+		line-height: 1.6;
+
+		text-align: center;
 	}
 
 	/* TABLET */
@@ -1034,6 +1069,10 @@ import Footer from '../components/Footer.astro';
 			grid-template-columns: 1fr;
 
 			gap: 50px;
+		}
+
+		.contact-intro {
+			padding-top: 0;
 		}
 	}
 
@@ -1149,17 +1188,21 @@ import Footer from '../components/Footer.astro';
 		.contact-inner {
 			width: min(100% - 36px, 600px);
 
-			grid-template-columns: 1fr;
-
 			gap: 45px;
-		}
-
-		.form-row {
-			grid-template-columns: 1fr;
 		}
 
 		.contact-inner h2 {
 			font-size: 48px;
+		}
+
+		.contact-form {
+			padding: 24px 20px;
+		}
+
+		.form-row {
+			grid-template-columns: 1fr;
+
+			gap: 0;
 		}
 	}
 
