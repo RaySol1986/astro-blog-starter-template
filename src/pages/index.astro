@@ -1,757 +1,117 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-
-		<style>
-			:global(html) {
-				background: #080a0e;
-				scroll-behavior: smooth;
-			}
-
-			:global(body) {
-				margin: 0;
-				font-family: Arial, Helvetica, sans-serif;
-				color: #f4f0e8;
-				background: #080a0e;
-			}
-
-			:global(*) {
-				box-sizing: border-box;
-			}
-
-			:global(a) {
-				-webkit-tap-highlight-color: transparent;
-			}
-
-			/* =========================
-			   HERO
-			========================= */
-
-			.hero {
-				position: relative;
-				min-height: 650px;
-				overflow: hidden;
-				background: #080a0e;
-				border-bottom: 1px solid rgba(196, 157, 78, 0.55);
-			}
-
-			/* London image */
-			.hero-london {
-				position: absolute;
-				inset: 0;
-				z-index: 0;
-				background-image:
-					linear-gradient(
-						90deg,
-						rgba(8, 10, 14, 1) 0%,
-						rgba(8, 10, 14, 0.96) 32%,
-						rgba(8, 10, 14, 0.72) 52%,
-						rgba(8, 10, 14, 0.30) 72%,
-						rgba(8, 10, 14, 0.45) 100%
-					),
-					url('/LondonBG.png');
-
-				background-size: cover;
-				background-position: center right;
-				background-repeat: no-repeat;
-			}
-
-			.hero::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				z-index: 1;
-				pointer-events: none;
-				background:
-					linear-gradient(
-						115deg,
-						transparent 48%,
-						rgba(196, 157, 78, 0.22) 48.2%,
-						transparent 48.5%
-					);
-			}
-
-			.hero-inner {
-				position: relative;
-				z-index: 2;
-				max-width: 1250px;
-				min-height: 650px;
-				margin: 0 auto;
-				padding: 95px 24px 70px;
-				display: flex;
-				align-items: center;
-			}
-
-			.hero-content {
-				width: 58%;
-				max-width: 650px;
-			}
-
-			.eyebrow {
-				margin-bottom: 20px;
-				color: #c49d4e;
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 2.5px;
-				text-transform: uppercase;
-			}
-
-			h1 {
-				margin: 0;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: clamp(58px, 6vw, 88px);
-				font-weight: 400;
-				line-height: 0.98;
-				letter-spacing: -3px;
-				color: #f4f0e8;
-			}
-
-			h1 .gold {
-				display: block;
-				color: #c49d4e;
-			}
-
-			.hero-line {
-				width: 52px;
-				height: 2px;
-				margin: 32px 0 25px;
-				background: #c49d4e;
-			}
-
-			.hero-description {
-				max-width: 610px;
-				margin: 0 0 30px;
-				color: #d4d0ca;
-				font-size: 17px;
-				line-height: 1.8;
-			}
-
-			.button {
-				display: inline-block;
-				padding: 16px 30px;
-				background: #c49d4e;
-				color: #080a0e;
-				border: 1px solid #c49d4e;
-				text-decoration: none;
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 1.5px;
-				text-transform: uppercase;
-				transition:
-					background 0.2s ease,
-					color 0.2s ease;
-			}
-
-			.button:hover {
-				background: transparent;
-				color: #c49d4e;
-			}
-
-			/* =========================
-			   STATS
-			========================= */
-
-			.stats {
-				position: relative;
-				z-index: 3;
-				background: #080a0e;
-				border-bottom: 1px solid rgba(196, 157, 78, 0.35);
-			}
-
-			.stats-inner {
-				max-width: 1050px;
-				margin: 0 auto;
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-			}
-
-			.stat {
-				min-height: 115px;
-				padding: 25px 24px;
-				display: flex;
-				align-items: center;
-				gap: 18px;
-				border-right: 1px solid rgba(255, 255, 255, 0.12);
-			}
-
-			.stat:last-child {
-				border-right: none;
-			}
-
-			.stat-number {
-				color: #c49d4e;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: 32px;
-				white-space: nowrap;
-			}
-
-			.stat-label strong {
-				display: block;
-				margin-bottom: 6px;
-				color: #f4f0e8;
-				font-size: 11px;
-				line-height: 1.4;
-				letter-spacing: 1.5px;
-				text-transform: uppercase;
-			}
-
-			.stat-label span {
-				color: #777d87;
-				font-size: 10px;
-				line-height: 1.5;
-				letter-spacing: 1px;
-				text-transform: uppercase;
-			}
-
-			/* =========================
-			   ABOUT
-			========================= */
-
-			.section {
-				padding: 110px 24px;
-				background: #080a0e;
-			}
-
-			.section-inner {
-				max-width: 1050px;
-				margin: 0 auto;
-			}
-
-			.about-grid {
-				display: grid;
-				grid-template-columns: 1fr 0.9fr;
-				gap: 80px;
-				align-items: center;
-			}
-
-			h2 {
-				margin: 0 0 30px;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: clamp(46px, 5vw, 70px);
-				font-weight: 400;
-				line-height: 1.02;
-				letter-spacing: -2px;
-				color: #f4f0e8;
-			}
-
-			.about-copy p {
-				max-width: 590px;
-				margin: 0 0 24px;
-				color: #c6c2bc;
-				font-size: 16px;
-				line-height: 1.85;
-			}
-
-			/* PERSONAL PHOTO */
-
-			.photo-frame {
-				position: relative;
-				width: min(100%, 390px);
-				margin-left: auto;
-				padding: 10px;
-				border: 1px solid rgba(196, 157, 78, 0.45);
-				background: #10141a;
-			}
-
-			.photo-frame::before {
-				content: '';
-				position: absolute;
-				top: -10px;
-				left: -10px;
-				width: 100%;
-				height: 100%;
-				border: 1px solid rgba(196, 157, 78, 0.18);
-				pointer-events: none;
-			}
-
-			.personal-photo {
-				display: block;
-				width: 100%;
-				height: 480px;
-				object-fit: cover;
-				object-position: center top;
-				background: #10141a;
-			}
-
-			.photo-caption {
-				position: absolute;
-				left: 22px;
-				right: 22px;
-				bottom: 22px;
-				padding: 15px 17px;
-				background: rgba(8, 10, 14, 0.92);
-				border-left: 2px solid #c49d4e;
-			}
-
-			.photo-caption strong {
-				display: block;
-				color: #f4f0e8;
-				font-size: 10px;
-				letter-spacing: 2px;
-				text-transform: uppercase;
-			}
-
-			.photo-caption span {
-				display: block;
-				margin-top: 5px;
-				color: #c49d4e;
-				font-size: 9px;
-				letter-spacing: 2px;
-				text-transform: uppercase;
-			}
-
-			/* =========================
-			   MARKETS
-			========================= */
-
-			.markets-section {
-				padding: 100px 24px;
-				background: #0d1015;
-				border-top: 1px solid rgba(196, 157, 78, 0.15);
-				border-bottom: 1px solid rgba(196, 157, 78, 0.15);
-			}
-
-			.market-intro {
-				max-width: 680px;
-				margin-bottom: 45px;
-				color: #aaa7a1;
-				font-size: 17px;
-				line-height: 1.8;
-			}
-
-			.markets {
-				display: grid;
-				grid-template-columns: repeat(5, 1fr);
-				border-top: 1px solid rgba(255, 255, 255, 0.12);
-				border-left: 1px solid rgba(255, 255, 255, 0.12);
-			}
-
-			.market {
-				padding: 35px 20px;
-				background: #0b0e13;
-				border-right: 1px solid rgba(255, 255, 255, 0.12);
-				border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-				color: #c49d4e;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: 22px;
-				text-align: center;
-			}
-
-			/* =========================
-			   MARKET FOCUS
-			========================= */
-
-			.focus-grid {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 20px;
-				margin-top: 45px;
-			}
-
-			.focus-card {
-				padding: 35px;
-				background: #0d1015;
-				border: 1px solid rgba(255, 255, 255, 0.10);
-				border-top: 2px solid #c49d4e;
-			}
-
-			.focus-card h3 {
-				margin: 0 0 15px;
-				color: #f4f0e8;
-				font-family: Georgia, 'Times New Roman', serif;
-				font-size: 25px;
-				font-weight: 400;
-			}
-
-			.focus-card p {
-				margin: 0;
-				color: #999ea6;
-				font-size: 15px;
-				line-height: 1.75;
-			}
-
-			.disclaimer {
-				max-width: 800px;
-				margin: 50px 0 0;
-				color: #656b74;
-				font-size: 12px;
-				line-height: 1.7;
-			}
-
-			/* =========================
-			   CONTACT
-			========================= */
-
-			.contact {
-				padding: 110px 24px;
-				text-align: center;
-				background: #0d1015;
-				border-top: 1px solid rgba(196, 157, 78, 0.25);
-			}
-
-			.contact p {
-				max-width: 620px;
-				margin: 0 auto 30px;
-				color: #aaa7a1;
-				font-size: 17px;
-				line-height: 1.8;
-			}
-
-			/* =========================
-			   MOBILE
-			========================= */
-
-			@media (max-width: 900px) {
-				.hero {
-					min-height: 700px;
-				}
-
-				.hero-inner {
-					min-height: 700px;
-				}
-
-				.hero-content {
-					width: 70%;
-				}
-
-				.stats-inner {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
-				.stat:nth-child(2) {
-					border-right: none;
-				}
-
-				.stat:nth-child(-n + 2) {
-					border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-				}
-
-				.about-grid {
-					grid-template-columns: 1fr;
-					gap: 60px;
-				}
-
-				.photo-frame {
-					margin: 0 auto;
-				}
-
-				.markets {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
-				.focus-grid {
-					grid-template-columns: 1fr;
-				}
-			}
-
-			@media (max-width: 600px) {
-				.hero {
-					min-height: 720px;
-				}
-
-				.hero-inner {
-					min-height: 720px;
-					padding: 70px 20px 50px;
-					align-items: flex-start;
-				}
-
-				.hero-london {
-					background-position: 70% center;
-					background-image:
-						linear-gradient(
-							90deg,
-							rgba(8, 10, 14, 0.98) 0%,
-							rgba(8, 10, 14, 0.90) 55%,
-							rgba(8, 10, 14, 0.65) 100%
-						),
-						url('/LondonBG.png');
-				}
-
-				.hero-content {
-					width: 100%;
-				}
-
-				h1 {
-					font-size: 53px;
-					letter-spacing: -2px;
-				}
-
-				.hero-description {
-					font-size: 15px;
-				}
-
-				.stats-inner {
-					grid-template-columns: 1fr 1fr;
-				}
-
-				.stat {
-					min-height: 100px;
-					padding: 18px 12px;
-					gap: 10px;
-				}
-
-				.stat-number {
-					font-size: 25px;
-				}
-
-				.stat-label strong {
-					font-size: 9px;
-				}
-
-				.stat-label span {
-					font-size: 8px;
-				}
-
-				.section,
-				.markets-section,
-				.contact {
-					padding: 75px 20px;
-				}
-
-				h2 {
-					font-size: 45px;
-				}
-
-				.personal-photo {
-					height: 420px;
-				}
-
-				.markets {
-					grid-template-columns: 1fr;
-				}
-			}
-		</style>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Raymond Solomon | Senior Financial Advisor</title>
+		<meta
+			name="description"
+			content="Raymond Solomon is a Senior Financial Advisor with 20 years of experience navigating global financial markets."
+		/>
 	</head>
 
 	<body>
 		<Header />
 
 		<main>
-			<!-- =========================
-			     HERO
-			========================= -->
-
+			<!-- HERO -->
 			<section class="hero">
-				<div class="hero-london"></div>
-
 				<div class="hero-inner">
 					<div class="hero-content">
-						<div class="eyebrow">Senior Financial Advisor</div>
+						<div class="eyebrow">SENIOR FINANCIAL ADVISOR</div>
 
 						<h1>
-							Experience.<br />
-							Discipline.
-							<span class="gold">Market Insight.</span>
+							<span>Experience.</span>
+							<span>Discipline.</span>
+							<strong>Market Insight.</strong>
 						</h1>
 
-						<div class="hero-line"></div>
+						<div class="gold-line"></div>
 
 						<p class="hero-description">
-							Raymond Solomon brings 20 years of experience
-							navigating global financial markets, with a
-							disciplined approach to research, risk and market
-							opportunity.
+							Raymond Solomon brings 20 years of experience navigating global
+							financial markets, with a disciplined approach to research, risk
+							and market opportunity.
 						</p>
 
-						<a class="button" href="#contact">
-							Request a Consultation
+						<a class="hero-button" href="/about#contact">
+							REQUEST A CONSULTATION
 						</a>
+					</div>
+
+					<div class="hero-image">
+						<img
+							src="/LondonBG.png"
+							alt="London financial district at night"
+						/>
+						<div class="image-overlay"></div>
 					</div>
 				</div>
 			</section>
 
-			<!-- =========================
-			     STATS
-			========================= -->
-
+			<!-- STATS -->
 			<section class="stats">
 				<div class="stats-inner">
 					<div class="stat">
 						<div class="stat-number">20+</div>
-						<div class="stat-label">
-							<strong>Years Experience</strong>
-							<span>Professional market experience</span>
+						<div>
+							<div class="stat-heading">YEARS</div>
+							<div class="stat-heading">EXPERIENCE</div>
+							<div class="stat-small">PROFESSIONAL MARKET EXPERIENCE</div>
 						</div>
 					</div>
 
 					<div class="stat">
 						<div class="stat-number">5</div>
-						<div class="stat-label">
-							<strong>Market Areas</strong>
-							<span>Global markets followed</span>
+						<div>
+							<div class="stat-heading">MARKET</div>
+							<div class="stat-heading">AREAS</div>
+							<div class="stat-small">GLOBAL MARKETS FOLLOWED</div>
 						</div>
 					</div>
 
 					<div class="stat">
 						<div class="stat-number">UK</div>
-						<div class="stat-label">
-							<strong>Based in London</strong>
-							<span>UK financial markets</span>
+						<div>
+							<div class="stat-heading">BASED IN</div>
+							<div class="stat-heading">LONDON</div>
+							<div class="stat-small">UK FINANCIAL MARKETS</div>
 						</div>
 					</div>
 
 					<div class="stat">
-						<div class="stat-number">◆</div>
-						<div class="stat-label">
-							<strong>Disciplined</strong>
-							<span>Research driven</span>
+						<div class="diamond"></div>
+						<div>
+							<div class="stat-heading">DISCIPLINED</div>
+							<div class="stat-small">RESEARCH DRIVEN</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<!-- =========================
-			     ABOUT + PERSONAL PHOTO
-			========================= -->
+			<!-- INTRO -->
+			<section class="intro">
+				<div class="intro-inner">
+					<div class="intro-label">MARKET PERSPECTIVE</div>
 
-			<section class="section" id="about">
-				<div class="section-inner about-grid">
-					<div class="about-copy">
-						<div class="eyebrow">About Raymond</div>
-
-						<h2>
-							Two decades of market experience.
-						</h2>
-
-						<p>
-							Over the past 20 years in the UK, I have developed
-							a deep understanding of financial markets and the
-							factors that influence investment decisions.
-						</p>
-
-						<p>
-							My background includes business and finance
-							education at London Business School, combined
-							with years of practical experience observing
-							markets through different economic cycles.
-						</p>
-
-						<p>
-							My approach is built around research, discipline,
-							risk awareness and a clear understanding of each
-							client's objectives.
-						</p>
-					</div>
-
-					<div class="photo-frame">
-						<img
-							class="personal-photo"
-							src="/Picture1.png"
-							alt="Raymond Solomon"
-							onerror="this.onerror=null; this.src='/Picture1.jpg';"
-						/>
-
-						<div class="photo-caption">
-							<strong>Raymond Solomon</strong>
-							<span>London</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- =========================
-			     MARKETS
-			========================= -->
-
-			<section class="markets-section" id="markets">
-				<div class="section-inner">
-					<div class="eyebrow">Markets</div>
-
-					<h2>Global markets I follow.</h2>
-
-					<p class="market-intro">
-						I monitor a broad range of global markets to
-						understand opportunities, risks and changing market
-						conditions.
-					</p>
-
-					<div class="markets">
-						<div class="market">Stocks</div>
-						<div class="market">Commodities</div>
-						<div class="market">Forex</div>
-						<div class="market">Metals</div>
-						<div class="market">Crypto</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- =========================
-			     MARKET FOCUS
-			========================= -->
-
-			<section class="section">
-				<div class="section-inner">
-					<div class="eyebrow">Market Focus</div>
-
-					<h2>Experience across market cycles.</h2>
-
-					<div class="focus-grid">
-						<div class="focus-card">
-							<h3>Equity Markets</h3>
-
-							<p>
-								Research-driven analysis of companies,
-								sectors, earnings and broader market
-								conditions.
-							</p>
-						</div>
-
-						<div class="focus-card">
-							<h3>Earnings Season</h3>
-
-							<p>
-								Focused attention on corporate earnings,
-								guidance, expectations and market
-								reactions.
-							</p>
-						</div>
-
-						<div class="focus-card">
-							<h3>Economic Data</h3>
-
-							<p>
-								Monitoring major economic releases and their
-								potential influence on currencies and
-								markets.
-							</p>
-						</div>
-					</div>
-
-					<p class="disclaimer">
-						Information presented on this website is for general
-						informational purposes only and does not constitute
-						investment advice or a recommendation to buy or sell
-						any financial instrument. Past performance is not
-						indicative of future results.
-					</p>
-				</div>
-			</section>
-
-			<!-- =========================
-			     CONTACT
-			========================= -->
-
-			<section class="contact" id="contact">
-				<div class="section-inner">
-					<div class="eyebrow">Contact</div>
-
-					<h2>Let's start a conversation.</h2>
+					<h2>
+						Clarity in complex<br />
+						financial markets.
+					</h2>
 
 					<p>
-						If you would like to discuss your financial goals or
-						learn more about my approach, get in touch.
+						A research-led approach focused on understanding markets,
+						managing risk and identifying opportunities through changing
+						economic conditions.
 					</p>
 
-					<a class="button" href="/about#contact">
-						Contact Raymond
+					<a href="/about" class="text-link">
+						LEARN MORE ABOUT RAYMOND
+						<span>→</span>
 					</a>
 				</div>
 			</section>
@@ -760,3 +120,321 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Footer />
 	</body>
 </html>
+
+<style>
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		background: #080a0e;
+	}
+
+	:global(body) {
+		margin: 0;
+		background: #080a0e;
+		color: #f4f0e8;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.hero {
+		background: #080a0e;
+		padding: 70px 24px 0;
+	}
+
+	.hero-inner {
+		max-width: 1250px;
+		min-height: 610px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 48% 52%;
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid rgba(196, 157, 78, 0.5);
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 3;
+		padding: 55px 55px 70px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background: #080a0e;
+	}
+
+	.eyebrow {
+		color: #c49d4e;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 2.5px;
+		margin-bottom: 24px;
+	}
+
+	h1 {
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(58px, 5.2vw, 82px);
+		font-weight: 400;
+		line-height: 0.98;
+		letter-spacing: -3px;
+	}
+
+	h1 span,
+	h1 strong {
+		display: block;
+	}
+
+	h1 span {
+		color: #f4f0e8;
+	}
+
+	h1 strong {
+		color: #c49d4e;
+		font-weight: 400;
+	}
+
+	.gold-line {
+		width: 52px;
+		height: 2px;
+		background: #c49d4e;
+		margin: 30px 0 25px;
+	}
+
+	.hero-description {
+		max-width: 570px;
+		margin: 0;
+		color: #c9c5bd;
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.hero-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		margin-top: 32px;
+		padding: 17px 30px;
+		background: #c49d4e;
+		color: #080a0e;
+		text-decoration: none;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 1.5px;
+		transition:
+			background 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.hero-button:hover {
+		background: #d5b466;
+		transform: translateY(-2px);
+	}
+
+	.hero-image {
+		position: relative;
+		min-height: 610px;
+		overflow: hidden;
+	}
+
+	.hero-image img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		object-position: center;
+		filter: brightness(0.68) contrast(1.08);
+	}
+
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				90deg,
+				#080a0e 0%,
+				rgba(8, 10, 14, 0.25) 15%,
+				rgba(8, 10, 14, 0.05) 100%
+			),
+			linear-gradient(
+				0deg,
+				rgba(8, 10, 14, 0.35),
+				transparent 45%
+			);
+	}
+
+	/* STATS */
+
+	.stats {
+		background: #080a0e;
+		padding: 0 24px;
+	}
+
+	.stats-inner {
+		max-width: 1250px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		border-bottom: 1px solid rgba(196, 157, 78, 0.45);
+	}
+
+	.stat {
+		min-height: 115px;
+		display: flex;
+		align-items: center;
+		gap: 22px;
+		padding: 25px 30px;
+		border-right: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	.stat:first-child {
+		border-left: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	.stat-number {
+		flex-shrink: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		color: #c49d4e;
+		font-size: 30px;
+	}
+
+	.stat-heading {
+		color: #f4f0e8;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 1.5px;
+		line-height: 1.5;
+	}
+
+	.stat-small {
+		max-width: 130px;
+		margin-top: 5px;
+		color: #737985;
+		font-size: 9px;
+		line-height: 1.5;
+		letter-spacing: 1px;
+	}
+
+	.diamond {
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
+		background: #c49d4e;
+		transform: rotate(45deg);
+	}
+
+	/* INTRO */
+
+	.intro {
+		padding: 130px 24px;
+		background: #080a0e;
+	}
+
+	.intro-inner {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.intro-label {
+		color: #c49d4e;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 2.5px;
+		margin-bottom: 22px;
+	}
+
+	.intro h2 {
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(42px, 5vw, 68px);
+		font-weight: 400;
+		line-height: 1.05;
+		letter-spacing: -2px;
+	}
+
+	.intro p {
+		max-width: 600px;
+		margin: 30px 0;
+		color: #aaa7a1;
+		font-size: 16px;
+		line-height: 1.8;
+	}
+
+	.text-link {
+		color: #c49d4e;
+		text-decoration: none;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 1.5px;
+	}
+
+	.text-link span {
+		margin-left: 10px;
+		font-size: 16px;
+	}
+
+	@media (max-width: 900px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-content {
+			padding: 65px 40px;
+		}
+
+		.hero-image {
+			min-height: 430px;
+		}
+
+		.stats-inner {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.stat:nth-child(3),
+		.stat:nth-child(4) {
+			border-top: 1px solid rgba(255, 255, 255, 0.12);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.hero {
+			padding: 30px 16px 0;
+		}
+
+		.hero-content {
+			padding: 50px 10px;
+		}
+
+		h1 {
+			font-size: 54px;
+			letter-spacing: -2px;
+		}
+
+		.hero-description {
+			font-size: 15px;
+		}
+
+		.hero-image {
+			min-height: 330px;
+		}
+
+		.stats {
+			padding: 0 16px;
+		}
+
+		.stats-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.stat {
+			border-left: 0 !important;
+			border-right: 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		.intro {
+			padding: 90px 24px;
+		}
+	}
+</style>
