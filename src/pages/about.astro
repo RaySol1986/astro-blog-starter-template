@@ -1,108 +1,1035 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout
-	title="About Raymond Solomon"
-	description="Learn more about Raymond Solomon, Senior Financial Advisor."
-	pubDate={new Date('August 18 2026')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<h2>Raymond Solomon</h2>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About Raymond Solomon | Senior Financial Advisor</title>
+		<meta
+			name="description"
+			content="Learn more about Raymond Solomon, Senior Financial Advisor, and his approach to financial markets."
+		/>
+	</head>
 
-	<p>
-		<strong>Senior Financial Advisor</strong> with 20 years of experience
-		following and analyzing global financial markets.
-	</p>
+	<body>
+		<Header />
 
-	<p>
-		My approach is built around understanding market structure, economic
-		data, earnings, and the factors that can move prices across different
-		asset classes.
-	</p>
+		<main>
+			<!-- INTRODUCTION -->
+			<section class="about-hero">
+				<div class="about-container">
+					<div class="about-copy">
+						<div class="eyebrow">ABOUT RAYMOND</div>
 
-	<h2>Experience & Education</h2>
+						<h1>
+							Two decades of
+							<br />
+							market
+							<br />
+							experience.
+						</h1>
 
-	<p>
-		Over two decades of market experience have given me exposure to a wide
-		range of financial conditions, from major economic cycles to periods of
-		extreme market volatility.
-	</p>
+						<div class="gold-line"></div>
 
-	<p>
-		I studied at <strong>London Business School (LBS)</strong>, with a focus
-		on finance and the principles that underpin modern financial markets.
-	</p>
+						<p class="intro">
+							Over the past 20 years in the UK, I have developed a deep
+							understanding of financial markets and the factors that
+							influence investment decisions.
+						</p>
 
-	<h2>Markets I Follow</h2>
+						<p>
+							My background includes business and finance education at
+							<strong>London Business School</strong>, combined with years
+							of practical experience observing markets through different
+							economic cycles.
+						</p>
 
-	<ul>
-		<li>Stocks & Equities</li>
-		<li>Commodities</li>
-		<li>Forex</li>
-		<li>Precious Metals</li>
-		<li>Cryptocurrency</li>
-	</ul>
+						<p>
+							My approach is built around research, discipline, risk
+							awareness and a clear understanding of each client's
+							objectives.
+						</p>
+					</div>
 
-	<h2>Market Experience</h2>
+					<div class="about-photo-column">
+						<div class="photo-frame">
+							<div class="photo-inner">
+								<img
+									src="/Picture1.png"
+									alt="Raymond Solomon"
+								/>
 
-	<p>
-		My work focuses particularly on understanding the events and market
-		conditions that can create significant opportunities or risks.
-	</p>
+								<div class="photo-caption">
+									<div class="caption-name">
+										RAYMOND SOLOMON
+									</div>
 
-	<ul>
-		<li>
-			<strong>Earnings Season:</strong> analyzing company results,
-			expectations, guidance, and market reactions.
-		</li>
-		<li>
-			<strong>Non-Farm Payrolls (NFP):</strong> following employment data
-			and its potential impact on currencies, commodities, and equities.
-		</li>
-		<li>
-			<strong>Equity Markets:</strong> identifying potential opportunities
-			during periods of heightened volatility.
-		</li>
-	</ul>
+									<div class="caption-location">
+										LONDON
+									</div>
+								</div>
+							</div>
+						</div>
 
-	<p>
-		One notable example from my market experience was identifying Tesla
-		around the $300-per-share level during the COVID-era market environment.
-		Market opportunities like this demonstrate why preparation, discipline,
-		and understanding the broader market context matter.
-	</p>
+						<div class="photo-accent"></div>
+					</div>
+				</div>
+			</section>
 
-	<h2>My Approach</h2>
+			<!-- EXPERIENCE -->
+			<section class="experience-section">
+				<div class="section-container">
+					<div class="section-heading">
+						<div class="eyebrow">EXPERIENCE & EDUCATION</div>
 
-	<p>
-		I believe successful market analysis starts with preparation rather than
-		prediction. Economic releases, company earnings, price action, and
-		market sentiment all need to be considered together.
-	</p>
+						<h2>
+							Experience built
+							<br />
+							through market cycles.
+						</h2>
+					</div>
 
-	<p>
-		The objective is not to chase every move in the market. It is to identify
-		high-quality setups, understand the risks involved, and make decisions
-		based on a clear process.
-	</p>
+					<div class="section-content">
+						<p>
+							Over two decades of market experience have given me
+							exposure to a wide range of financial conditions, from
+							major economic cycles to periods of extreme market
+							volatility.
+						</p>
 
-	<h2>Let's Talk</h2>
+						<p>
+							I studied at <strong>London Business School (LBS)</strong>,
+							with a focus on finance and the principles that underpin
+							modern financial markets.
+						</p>
 
-	<p>
-		If you would like to discuss the markets or learn more about my approach,
-		you can get in touch through the contact form.
-	</p>
+						<p>
+							That combination of formal education and practical market
+							experience has shaped a disciplined approach to analysing
+							opportunities, managing risk and understanding the broader
+							context behind market movements.
+						</p>
+					</div>
+				</div>
+			</section>
 
-	<p>
-		<a href="/contact">Contact Raymond Solomon →</a>
-	</p>
+			<!-- MARKETS -->
+			<section class="markets-section">
+				<div class="section-container markets-grid">
+					<div class="markets-heading">
+						<div class="eyebrow">MARKETS I FOLLOW</div>
 
-	<p>
-		<small>
-			Information on this website is provided for general informational
-			purposes only and should not be considered personalized investment
-			advice or a guarantee of future results.
-		</small>
-	</p>
-</Layout>
+						<h2>
+							A broad view of
+							<br />
+							global markets.
+						</h2>
+					</div>
+
+					<div class="markets-list">
+						<div class="market-item">
+							<span class="market-number">01</span>
+							<div>
+								<h3>Stocks & Equities</h3>
+								<p>
+									Following company performance, valuations,
+									earnings and broader equity-market conditions.
+								</p>
+							</div>
+						</div>
+
+						<div class="market-item">
+							<span class="market-number">02</span>
+							<div>
+								<h3>Commodities</h3>
+								<p>
+									Monitoring supply, demand, economic conditions
+									and global market drivers.
+								</p>
+							</div>
+						</div>
+
+						<div class="market-item">
+							<span class="market-number">03</span>
+							<div>
+								<h3>Forex</h3>
+								<p>
+									Analysing currency movements alongside economic
+									data, interest rates and market sentiment.
+								</p>
+							</div>
+						</div>
+
+						<div class="market-item">
+							<span class="market-number">04</span>
+							<div>
+								<h3>Precious Metals</h3>
+								<p>
+									Following gold and other precious metals as
+									important components of global markets.
+								</p>
+							</div>
+						</div>
+
+						<div class="market-item">
+							<span class="market-number">05</span>
+							<div>
+								<h3>Cryptocurrency</h3>
+								<p>
+									Observing digital assets and the evolving
+									market structure surrounding them.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- MARKET EXPERIENCE -->
+			<section class="market-experience">
+				<div class="section-container">
+					<div class="experience-top">
+						<div>
+							<div class="eyebrow">MARKET EXPERIENCE</div>
+
+							<h2>
+								Understanding what
+								<br />
+								moves markets.
+							</h2>
+						</div>
+
+						<p class="experience-intro">
+							My work focuses particularly on understanding the events
+							and market conditions that can create significant
+							opportunities or risks.
+						</p>
+					</div>
+
+					<div class="experience-cards">
+						<div class="experience-card">
+							<div class="card-number">01</div>
+
+							<h3>Earnings Season</h3>
+
+							<p>
+								Analysing company results, expectations, guidance and
+								market reactions.
+							</p>
+						</div>
+
+						<div class="experience-card">
+							<div class="card-number">02</div>
+
+							<h3>Economic Data</h3>
+
+							<p>
+								Following employment data, inflation, interest rates
+								and other economic releases that can influence
+								markets.
+							</p>
+						</div>
+
+						<div class="experience-card">
+							<div class="card-number">03</div>
+
+							<h3>Equity Markets</h3>
+
+							<p>
+								Identifying potential opportunities during periods of
+								heightened volatility and changing market conditions.
+							</p>
+						</div>
+					</div>
+
+					<div class="market-example">
+						<div class="example-line"></div>
+
+						<p>
+							One notable example from my market experience was
+							identifying Tesla around the $300-per-share level during
+							the COVID-era market environment. Market opportunities
+							like this demonstrate why preparation, discipline and
+							understanding the broader market context matter.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- APPROACH -->
+			<section class="approach-section">
+				<div class="section-container approach-grid">
+					<div class="approach-heading">
+						<div class="eyebrow">MY APPROACH</div>
+
+						<h2>
+							Preparation
+							<br />
+							over prediction.
+						</h2>
+					</div>
+
+					<div class="approach-content">
+						<p class="large-copy">
+							I believe successful market analysis starts with
+							preparation rather than prediction.
+						</p>
+
+						<p>
+							Economic releases, company earnings, price action and
+							market sentiment all need to be considered together.
+						</p>
+
+						<p>
+							The objective is not to chase every move in the market.
+							It is to identify high-quality setups, understand the
+							risks involved and make decisions based on a clear
+							process.
+						</p>
+
+						<div class="approach-points">
+							<div>
+								<span>01</span>
+								<strong>Research</strong>
+								<p>Understand the information behind the market.</p>
+							</div>
+
+							<div>
+								<span>02</span>
+								<strong>Discipline</strong>
+								<p>Follow a clear process rather than emotion.</p>
+							</div>
+
+							<div>
+								<span>03</span>
+								<strong>Risk Awareness</strong>
+								<p>Consider opportunity alongside potential downside.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section class="about-cta">
+				<div class="cta-inner">
+					<div class="eyebrow">LET'S TALK</div>
+
+					<h2>
+						Interested in discussing
+						<br />
+						the markets?
+					</h2>
+
+					<p>
+						If you would like to discuss the markets or learn more
+						about my approach, get in touch.
+					</p>
+
+					<a class="cta-button" href="/#contact">
+						REQUEST A CONSULTATION
+					</a>
+				</div>
+			</section>
+
+			<!-- DISCLAIMER -->
+			<section class="disclaimer">
+				<div class="disclaimer-inner">
+					<p>
+						Information on this website is provided for general
+						informational purposes only and should not be considered
+						personalized investment advice or a guarantee of future
+						results.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	:global(*) {
+		box-sizing: border-box;
+	}
+
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
+	:global(body) {
+		margin: 0;
+		background: #080a0e;
+		color: #f4f0e8;
+		font-family:
+			Arial,
+			Helvetica,
+			sans-serif;
+	}
+
+	main {
+		overflow: hidden;
+		background: #080a0e;
+	}
+
+	.about-container,
+	.section-container {
+		width: min(1180px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.eyebrow {
+		margin-bottom: 25px;
+		color: #c49d4e;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	h3 {
+		margin: 0;
+	}
+
+	/* HERO */
+
+	.about-hero {
+		position: relative;
+		padding: 105px 0 125px;
+		background:
+			linear-gradient(
+				90deg,
+				#080a0e 0%,
+				#080a0e 48%,
+				#0b0d12 100%
+			);
+	}
+
+	.about-container {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 440px;
+		align-items: center;
+		gap: 105px;
+	}
+
+	.about-copy {
+		max-width: 610px;
+	}
+
+	.about-copy h1 {
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: clamp(56px, 6vw, 88px);
+		font-weight: 400;
+		line-height: 0.97;
+		letter-spacing: -3px;
+		color: #f4f0e8;
+	}
+
+	.gold-line {
+		width: 60px;
+		height: 2px;
+		margin: 40px 0 28px;
+		background: #c49d4e;
+	}
+
+	.about-copy p {
+		max-width: 570px;
+		margin: 0 0 25px;
+		color: #bdbbb7;
+		font-size: 16px;
+		line-height: 1.85;
+	}
+
+	.about-copy .intro {
+		color: #e1ded8;
+		font-size: 18px;
+		line-height: 1.8;
+	}
+
+	.about-copy strong {
+		color: #e9e5dc;
+		font-weight: 600;
+	}
+
+	/* PHOTO */
+
+	.about-photo-column {
+		position: relative;
+		width: 100%;
+		max-width: 440px;
+		justify-self: end;
+		padding: 16px;
+	}
+
+	.photo-frame {
+		position: relative;
+		z-index: 2;
+		padding: 10px;
+		border: 1px solid rgba(196, 157, 78, 0.45);
+		background: #0c0f14;
+	}
+
+	.photo-inner {
+		position: relative;
+		aspect-ratio: 0.78;
+		overflow: hidden;
+		background: #11151b;
+	}
+
+	.photo-inner img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.photo-caption {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		left: 16px;
+		padding: 20px 20px 18px;
+		border-left: 2px solid #c49d4e;
+		background: rgba(8, 10, 14, 0.92);
+		backdrop-filter: blur(5px);
+	}
+
+	.caption-name {
+		color: #f4f0e8;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 2px;
+		line-height: 1.5;
+	}
+
+	.caption-location {
+		margin-top: 6px;
+		color: #c49d4e;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 2px;
+	}
+
+	.photo-accent {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		width: 75%;
+		height: 85%;
+		border-top: 1px solid rgba(196, 157, 78, 0.25);
+		border-right: 1px solid rgba(196, 157, 78, 0.25);
+	}
+
+	/* EXPERIENCE */
+
+	.experience-section {
+		padding: 115px 0;
+		border-top: 1px solid rgba(196, 157, 78, 0.22);
+		background: #0b0e13;
+	}
+
+	.section-container {
+		display: grid;
+		grid-template-columns: 0.85fr 1fr;
+		gap: 120px;
+	}
+
+	.section-heading h2,
+	.markets-heading h2,
+	.approach-heading h2 {
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: clamp(44px, 4.5vw, 64px);
+		font-weight: 400;
+		line-height: 1.03;
+		letter-spacing: -2px;
+		color: #f4f0e8;
+	}
+
+	.section-content {
+		padding-top: 5px;
+	}
+
+	.section-content p {
+		margin: 0 0 27px;
+		color: #bdbbb7;
+		font-size: 16px;
+		line-height: 1.85;
+	}
+
+	.section-content strong {
+		color: #e5e1d8;
+	}
+
+	/* MARKETS */
+
+	.markets-section {
+		padding: 120px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+		background: #080a0e;
+	}
+
+	.markets-grid {
+		grid-template-columns: 0.75fr 1.25fr;
+		align-items: start;
+	}
+
+	.markets-list {
+		border-top: 1px solid rgba(196, 157, 78, 0.3);
+	}
+
+	.market-item {
+		display: grid;
+		grid-template-columns: 55px 1fr;
+		gap: 20px;
+		padding: 28px 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.market-number {
+		padding-top: 3px;
+		color: #c49d4e;
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: 17px;
+	}
+
+	.market-item h3 {
+		color: #f1eee7;
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: 22px;
+		font-weight: 400;
+	}
+
+	.market-item p {
+		max-width: 540px;
+		margin: 8px 0 0;
+		color: #858991;
+		font-size: 14px;
+		line-height: 1.7;
+	}
+
+	/* MARKET EXPERIENCE */
+
+	.market-experience {
+		padding: 120px 0;
+		background: #0b0e13;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.market-experience .section-container {
+		display: block;
+	}
+
+	.experience-top {
+		display: grid;
+		grid-template-columns: 1fr 0.8fr;
+		gap: 120px;
+		align-items: end;
+		margin-bottom: 65px;
+	}
+
+	.experience-intro {
+		margin: 0;
+		color: #bdbbb7;
+		font-size: 17px;
+		line-height: 1.8;
+	}
+
+	.experience-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		border-top: 1px solid rgba(196, 157, 78, 0.35);
+		border-bottom: 1px solid rgba(196, 157, 78, 0.25);
+	}
+
+	.experience-card {
+		min-height: 260px;
+		padding: 32px;
+		border-right: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.experience-card:last-child {
+		border-right: none;
+	}
+
+	.card-number {
+		margin-bottom: 70px;
+		color: #c49d4e;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+
+	.experience-card h3 {
+		margin-bottom: 14px;
+		color: #f1eee7;
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: 24px;
+		font-weight: 400;
+	}
+
+	.experience-card p {
+		margin: 0;
+		color: #858991;
+		font-size: 14px;
+		line-height: 1.7;
+	}
+
+	.market-example {
+		display: grid;
+		grid-template-columns: 60px 1fr;
+		gap: 25px;
+		max-width: 800px;
+		margin-top: 55px;
+	}
+
+	.example-line {
+		width: 40px;
+		height: 2px;
+		margin-top: 12px;
+		background: #c49d4e;
+	}
+
+	.market-example p {
+		margin: 0;
+		color: #aaaeb5;
+		font-size: 15px;
+		line-height: 1.8;
+	}
+
+	/* APPROACH */
+
+	.approach-section {
+		padding: 120px 0;
+		background: #080a0e;
+		border-top: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.approach-grid {
+		align-items: start;
+	}
+
+	.approach-content {
+		padding-top: 3px;
+	}
+
+	.approach-content > p {
+		max-width: 610px;
+		margin: 0 0 25px;
+		color: #aaaeb5;
+		font-size: 16px;
+		line-height: 1.85;
+	}
+
+	.approach-content .large-copy {
+		color: #e7e3db;
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: 25px;
+		line-height: 1.45;
+	}
+
+	.approach-points {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		margin-top: 55px;
+		padding-top: 30px;
+		border-top: 1px solid rgba(196, 157, 78, 0.25);
+	}
+
+	.approach-points > div {
+		padding-right: 15px;
+	}
+
+	.approach-points span {
+		display: block;
+		margin-bottom: 16px;
+		color: #c49d4e;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+
+	.approach-points strong {
+		display: block;
+		margin-bottom: 8px;
+		color: #f0ede5;
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: 19px;
+		font-weight: 400;
+	}
+
+	.approach-points p {
+		margin: 0;
+		color: #737985;
+		font-size: 12px;
+		line-height: 1.6;
+	}
+
+	/* CTA */
+
+	.about-cta {
+		position: relative;
+		padding: 120px 24px;
+		border-top: 1px solid rgba(196, 157, 78, 0.25);
+		background:
+			linear-gradient(
+				135deg,
+				#0d1015 0%,
+				#080a0e 60%,
+				#101116 100%
+			);
+		text-align: center;
+	}
+
+	.cta-inner {
+		max-width: 760px;
+		margin: 0 auto;
+	}
+
+	.cta-inner .eyebrow {
+		margin-bottom: 22px;
+	}
+
+	.cta-inner h2 {
+		font-family:
+			Georgia,
+			"Times New Roman",
+			serif;
+		font-size: clamp(44px, 5vw, 68px);
+		font-weight: 400;
+		line-height: 1.05;
+		letter-spacing: -2px;
+		color: #f4f0e8;
+	}
+
+	.cta-inner p {
+		max-width: 520px;
+		margin: 28px auto 35px;
+		color: #999da5;
+		font-size: 15px;
+		line-height: 1.8;
+	}
+
+	.cta-button {
+		display: inline-block;
+		padding: 16px 30px;
+		border: 1px solid #c49d4e;
+		background: #c49d4e;
+		color: #080a0e;
+		text-decoration: none;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 1.8px;
+		transition:
+			background 0.2s ease,
+			color 0.2s ease;
+	}
+
+	.cta-button:hover {
+		background: transparent;
+		color: #c49d4e;
+	}
+
+	/* DISCLAIMER */
+
+	.disclaimer {
+		padding: 28px 24px;
+		background: #080a0e;
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.disclaimer-inner {
+		width: min(1050px, 100%);
+		margin: 0 auto;
+	}
+
+	.disclaimer p {
+		max-width: 850px;
+		margin: 0;
+		color: #5f646d;
+		font-size: 11px;
+		line-height: 1.7;
+	}
+
+	/* TABLET */
+
+	@media (max-width: 950px) {
+		.about-container {
+			grid-template-columns: 1fr 360px;
+			gap: 55px;
+		}
+
+		.section-container {
+			gap: 60px;
+		}
+
+		.experience-top {
+			gap: 60px;
+		}
+
+		.experience-card {
+			padding: 25px;
+		}
+	}
+
+	/* MOBILE */
+
+	@media (max-width: 760px) {
+		.about-container,
+		.section-container,
+		.markets-grid,
+		.approach-grid {
+			display: block;
+			width: min(100% - 36px, 600px);
+		}
+
+		.about-hero {
+			padding: 75px 0 85px;
+		}
+
+		.about-copy h1 {
+			font-size: clamp(52px, 15vw, 72px);
+			letter-spacing: -2px;
+		}
+
+		.about-copy .intro {
+			font-size: 17px;
+		}
+
+		.about-photo-column {
+			max-width: 420px;
+			margin: 65px auto 0;
+			padding: 10px;
+		}
+
+		.photo-inner {
+			aspect-ratio: 0.8;
+		}
+
+		.experience-section,
+		.markets-section,
+		.market-experience,
+		.approach-section {
+			padding: 80px 0;
+		}
+
+		.section-heading,
+		.markets-heading,
+		.approach-heading {
+			margin-bottom: 50px;
+		}
+
+		.section-heading h2,
+		.markets-heading h2,
+		.approach-heading h2 {
+			font-size: 48px;
+		}
+
+		.experience-top {
+			display: block;
+			margin-bottom: 45px;
+		}
+
+		.experience-top .experience-intro {
+			margin-top: 35px;
+		}
+
+		.experience-cards {
+			display: block;
+		}
+
+		.experience-card {
+			min-height: auto;
+			padding: 30px 20px;
+			border-right: none;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.experience-card:last-child {
+			border-bottom: none;
+		}
+
+		.card-number {
+			margin-bottom: 35px;
+		}
+
+		.market-example {
+			grid-template-columns: 40px 1fr;
+			gap: 15px;
+		}
+
+		.approach-points {
+			grid-template-columns: 1fr;
+			gap: 30px;
+		}
+
+		.about-cta {
+			padding: 90px 20px;
+		}
+
+		.cta-inner h2 {
+			font-size: 48px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.about-container,
+		.section-container {
+			width: min(100% - 30px, 600px);
+		}
+
+		.about-copy h1 {
+			font-size: 49px;
+		}
+
+		.photo-caption {
+			right: 10px;
+			bottom: 10px;
+			left: 10px;
+			padding: 15px;
+		}
+
+		.market-item {
+			grid-template-columns: 40px 1fr;
+			gap: 12px;
+		}
+
+		.market-item h3 {
+			font-size: 20px;
+		}
+
+		.cta-inner h2 {
+			font-size: 43px;
+		}
+	}
+</style>
