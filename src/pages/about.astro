@@ -54,29 +54,6 @@ import Footer from '../components/Footer.astro';
 							objectives.
 						</p>
 					</div>
-
-					<div class="about-photo-column">
-						<div class="photo-frame">
-							<div class="photo-inner">
-								<img
-									src="/Picture3RS.png"
-									alt="Raymond Solomon"
-								/>
-
-								<div class="photo-caption">
-									<div class="caption-name">
-										RAYMOND SOLOMON
-									</div>
-
-									<div class="caption-location">
-										LONDON
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="photo-accent"></div>
-					</div>
 				</div>
 			</section>
 
@@ -412,13 +389,6 @@ import Footer from '../components/Footer.astro';
 			);
 	}
 
-	.about-container {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) 440px;
-		align-items: center;
-		gap: 105px;
-	}
-
 	.about-copy {
 		max-width: 610px;
 	}
@@ -459,77 +429,6 @@ import Footer from '../components/Footer.astro';
 	.about-copy strong {
 		color: #e9e5dc;
 		font-weight: 600;
-	}
-
-	/* PHOTO */
-
-	.about-photo-column {
-		position: relative;
-		width: 100%;
-		max-width: 440px;
-		justify-self: end;
-		padding: 16px;
-	}
-
-	.photo-frame {
-		position: relative;
-		z-index: 2;
-		padding: 10px;
-		border: 1px solid rgba(196, 157, 78, 0.45);
-		background: #0c0f14;
-	}
-
-	.photo-inner {
-		position: relative;
-		aspect-ratio: 0.78;
-		overflow: hidden;
-		background: #11151b;
-	}
-
-	.photo-inner img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center top;
-	}
-
-	.photo-caption {
-		position: absolute;
-		right: 16px;
-		bottom: 16px;
-		left: 16px;
-		padding: 20px 20px 18px;
-		border-left: 2px solid #c49d4e;
-		background: rgba(8, 10, 14, 0.92);
-		backdrop-filter: blur(5px);
-	}
-
-	.caption-name {
-		color: #f4f0e8;
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 2px;
-		line-height: 1.5;
-	}
-
-	.caption-location {
-		margin-top: 6px;
-		color: #c49d4e;
-		font-size: 10px;
-		font-weight: 600;
-		letter-spacing: 2px;
-	}
-
-	.photo-accent {
-		position: absolute;
-		z-index: 1;
-		top: 0;
-		right: 0;
-		width: 75%;
-		height: 85%;
-		border-top: 1px solid rgba(196, 157, 78, 0.25);
-		border-right: 1px solid rgba(196, 157, 78, 0.25);
 	}
 
 	/* EXPERIENCE */
@@ -884,11 +783,6 @@ import Footer from '../components/Footer.astro';
 	/* TABLET */
 
 	@media (max-width: 950px) {
-		.about-container {
-			grid-template-columns: 1fr 360px;
-			gap: 55px;
-		}
-
 		.section-container {
 			gap: 60px;
 		}
@@ -924,16 +818,6 @@ import Footer from '../components/Footer.astro';
 
 		.about-copy .intro {
 			font-size: 17px;
-		}
-
-		.about-photo-column {
-			max-width: 420px;
-			margin: 65px auto 0;
-			padding: 10px;
-		}
-
-		.photo-inner {
-			aspect-ratio: 0.8;
 		}
 
 		.experience-section,
@@ -1010,13 +894,6 @@ import Footer from '../components/Footer.astro';
 
 		.about-copy h1 {
 			font-size: 49px;
-		}
-
-		.photo-caption {
-			right: 10px;
-			bottom: 10px;
-			left: 10px;
-			padding: 15px;
 		}
 
 		.market-item {
